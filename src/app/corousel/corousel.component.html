@@ -1,13 +1,17 @@
-<div class="carousel">
-    <div class="carousel-inner" [style.transform]="currentTransform">
-      <div
-        *ngFor="let image of images"
-        class="carousel-item"
-      >
-      <img [src]="image">
-    </div>
-      <!-- <div class="carousel-item" style="background-image : url('assets/img/1852x350_desktop_ua 1.png')"></div> -->
-    </div>
-    <button (click)="next()">next</button>
-    <button (click)="prev()">prev</button>
+<div class="preview">
+  <div class="carousel">
+      <div class="carousel-inner" [style.transform]="currentTransform">
+        <div
+          *ngFor="let image of images"
+          class="carousel-item"
+          >
+          <img [src]="image">
+        </div>
+      </div>
+      <button (click)="next()">></button>
+      <button (click)="prev()"><</button>
   </div>
+  <div class="profile">
+      
+  </div>
+</div>

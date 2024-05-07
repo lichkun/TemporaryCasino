@@ -1,0 +1,6 @@
+<section>
+    <h2>Play it now!</h2>
+    <div class="games">
+            <img *ngFor="let game of games" [src]="game.path" [alt]="game.title" class="game">
+    </div>
+</section>
