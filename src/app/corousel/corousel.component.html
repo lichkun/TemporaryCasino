@@ -1,22 +1,13 @@
-<div class="slider">
-    <div style="background-image: url('assets/img/1852x350_desktop_ua 1.png');"></div>
-    <div style="background-image: url('assets/img/1852x350_desktop_ua 1.png');"></div>
-    <div style="background-image: url('assets/img/1852x350_desktop_ua 1.png');"></div>
-</div>
-
-<script>
-    $(document).ready(function(){
-        function slider(){
-        let div_slider = $('.slider')
-        div_slider.animate( {  left: '-100%'}, 800, function(){
-            let first = $('.slider div').first().remove();
-            div_slider.append(first);
-            div_slider.css('left','0')
-        });
-    }
-    
-    setInterval(slider, 4000)
-
-    })
-   
-</script>
+<div class="carousel">
+    <div class="carousel-inner" [style.transform]="currentTransform">
+      <div
+        *ngFor="let image of images"
+        class="carousel-item"
+      >
+      <img [src]="image">
+    </div>
+      <!-- <div class="carousel-item" style="background-image : url('assets/img/1852x350_desktop_ua 1.png')"></div> -->
+    </div>
+    <button (click)="next()">next</button>
+    <button (click)="prev()">prev</button>
+  </div>
