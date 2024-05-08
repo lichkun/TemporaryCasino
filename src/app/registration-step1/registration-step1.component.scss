@@ -1,0 +1,52 @@
+section{
+    margin: 5% auto;
+    width: 80%;
+    height: auto;
+    background-color: #262832;
+    .panel{
+        background-color: #040613;
+        height: 70px;
+        margin: 0;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+       
+    }
+    .content{
+        display: flex;
+        justify-content: space-between;
+        padding: 3% 5%;
+        .details{
+            flex-basis: 40%;
+            input, select{
+                width: 80%;
+                height: 60px;
+                margin-bottom: 3%;
+                background: none;
+                font-size: 20px;
+                color: #fff;
+                padding: 0 10%;
+                outline: none;
+                border: 1px solid white;
+            }
+            select{
+                width: 100%;
+                padding: 0 10%;
+            }
+            .field{
+                position: relative;
+                img{
+                    position: absolute;
+                    left: 3%;
+                    top: 25%
+                }
+            }
+            
+        }
+    }
+    p{
+        margin: 0 ;
+        font-weight: bold;
+        font-size: 30px;
+    }
+}

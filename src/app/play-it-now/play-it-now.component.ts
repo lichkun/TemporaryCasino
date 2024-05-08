@@ -21,7 +21,7 @@ export class PlayItNowComponent {
     }
     ,{
       title: "gates of olympus",
-      path: "assets/img/slots/Juicy-Fruits-Slot-2022.2e16d0ba.fill-600x340.webp"
+      path: "assets/img/slots/Juicy-Fruits-Slot-2022.2e16d0ba.fill-600x340.webp" 
     },
     {
       title: "gates of olympus",
