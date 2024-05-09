@@ -9,10 +9,14 @@ import { Router } from '@angular/router';
     selector: 'app-registration-step1',
     standalone: true,
     templateUrl: './registration-step1.component.html',
-    styleUrl: './registration-step1.component.scss',
+    styleUrl: './registration-step1.component.scss', 
     imports: [CommonModule, NgxCountriesDropdownModule,RouterModule]
 })
 export class RegistrationStep1Component {
+isVisible: boolean= false;
+toggleEdit() {
+  this.isVisible = !this.isVisible;
+}
   
   countries: Country[] = [
     {

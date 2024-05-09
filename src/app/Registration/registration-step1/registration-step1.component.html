@@ -11,8 +11,8 @@
             </div>
             <div class="field">
                 <img src="assets/img/icons/Vector(1).svg" alt="" style="top: 11%">
-                <input type="password" placeholder="Password">
-                <p>Show</p>
+                <input [type]=" isVisible ? 'text':'password'" placeholder="Password">
+                <button (click)="toggleEdit()" class="editphone">{{ isVisible ? 'Show' : 'Hide' }}</button>
             </div>
             <div class="field">
                 <!-- <img src="assets/img/icons/Vector(2).svg" alt="" style="top: 22%"> -->
