@@ -1,88 +1,5 @@
 
-section{
-    margin: 5% auto;
-    width: 80%;
-    height: auto;
-    background-color: #262832;
-    box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);
-    .panel{
-        background-color: #040613;
-        height: 70px;
-        margin: 0;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-       
-    }
-    .content{
-        display: flex;
-        justify-content: space-between;
-        padding: 3% 5%;
-        
-        .details{
-            flex-basis: 40%;
-            .textinfo{
-                font-size: 24px;
-                font-weight: 400;
-                margin-bottom: 3%;
-            }
-            input, select{
-                width: 80%;
-                height: 60px;
-                margin-bottom: 3%;
-                background: none;
-                font-size: 20px;
-                color: #fff;
-                padding: 0 10%;
-                outline: none;
-                border: 1px solid white;
-            }
-            select{
-                width: 100%;
-                padding: 0 10%;
-            }
-            .field{
-                position: relative;
-                img{
-                    position: absolute;
-                    left: 3%;
-                    top: 25%
-                }
-                p{
-                    position: absolute;
-                    right: 5%;
-                    top: 20%;
-                    font-size: 24px;
-                    color: #CA1C65;
-                    font-weight: 500;
-                    
-                    &:hover{
-                        color: #96154b;
-                        cursor: pointer;
-                    }
-                }
-                select {
-                    option{
-                        background-color: #262832;
-                        border:1px solid #CA1C65;
-                        color: #fff;
-                    }
-                }
-                   
-            }
-            
-        }
-    }
-    p{
-        margin: 0 ;
-        font-weight: bold;
-        font-size: 30px;
-    }
-    .commercial{
-        background-color: #CA1C65;
-        flex-basis: 40%;
-    }
-}
+@import '../registration.scss';
 
 .next{
     display: flex;
@@ -123,12 +40,6 @@ section{
     }
 }
 
-.custom{
-    color: black  !important;
-}
-.custom .ipv_selected-item{
-    background-color: rgb(0, 255, 72) !important;
-}
 .nextbtn {
     width: 60%;
     height: 60px;
@@ -172,8 +83,4 @@ section{
         cursor: pointer;
         color: #660f33;
     }
-}
-.editable {
-    color: #888;
-    font-size: 20px;
 }
