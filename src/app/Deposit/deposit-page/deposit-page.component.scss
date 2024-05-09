@@ -102,3 +102,17 @@ button:hover {
     margin-top: 5%;
     margin-bottom: 5%;
 }
+.additional-fields {
+    display: flex;
+}
+
+.additional-fields .field {
+    width: calc(30% - 9px);
+    margin-right: 1px; 
+}
+
+.setAmountButton{
+    width: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
