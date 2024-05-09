@@ -1,0 +1,45 @@
+<section class="panel">
+    <div class="welcome">
+        <p>Deposit</p>
+    </div>
+
+    <div class="paymentForm">
+        <p>Payment Details</p>
+
+            
+        <div class="buttons-container">
+            <div class="column">
+                <button (click)="updateAmount(10)">10</button>
+                <button (click)="updateAmount(20)">20</button>
+            </div>
+            <div class="column">
+                <button (click)="updateAmount(50)">50</button>
+                <button (click)="updateAmount(100)">100</button>
+            </div>
+            <div class="column">
+                <button (click)="updateAmount(200)">200</button>
+                <button (click)="updateAmount(500)">500</button>
+            </div>
+        </div>
+
+        <div class="field">
+            <img src="assets/img/icons/Icon_Amount.svg" alt="" style="top: 17%;left:3%;height: 30px;width: 30px;">
+            <input type="text" [(ngModel)]="amount" placeholder="Amount">
+        </div>
+        <div class="field">
+            <img src="assets/img/icons/Icon_LastName.svg" alt=""style="top: 17%;left:3%;height: 30px;width: 30px;">
+            <input type="text" placeholder="Cardholder’s name">
+        </div>
+        <div class="field">
+            <img src="assets/img/icons/Icon_Number.svg" alt="" style="top: 17%;left:3%;height: 30px;width: 30px;">
+            <input type="text" placeholder="Card Number">
+        </div>
+    
+        
+
+    </div>
+    
+    
+
+  
+</section>
