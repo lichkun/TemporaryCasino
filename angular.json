@@ -30,7 +30,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/ngx-countries-dropdown/assets/styles.css",
               "src/styles.scss"
             ],
             "scripts": [
