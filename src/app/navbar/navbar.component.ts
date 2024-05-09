@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Game } from '../game';
+import { Game } from '../Interfaces/game';
 
 @Component({
   selector: 'app-navbar',

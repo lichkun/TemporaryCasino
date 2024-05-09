@@ -1,0 +1,160 @@
+
+section{
+    margin: 5% auto;
+    width: 80%;
+    height: auto;
+    background-color: #262832;
+    box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);
+    .panel{
+        background-color: #040613;
+        height: 70px;
+        margin: 0;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+       
+    }
+    .content{
+        display: flex;
+        justify-content: space-between;
+        padding: 3% 5%;
+        .details{
+            flex-basis: 40%;
+            input, select{
+                width: 80%;
+                height: 60px;
+                margin-bottom: 3%;
+                background: none;
+                font-size: 20px;
+                color: #fff;
+                padding: 0 10%;
+                outline: none;
+                border: 1px solid white;
+            }
+            select{
+                width: 100%;
+                padding: 0 10%;
+            }
+            .field{
+                position: relative;
+                img{
+                    position: absolute;
+                    left: 3%;
+                    top: 25%
+                }
+                p{
+                    position: absolute;
+                    right: 5%;
+                    top: 20%;
+                    font-size: 24px;
+                    color: #CA1C65;
+                    font-weight: 500;
+                    &:hover{
+                        color: #96154b;
+                        cursor: pointer;
+                    }
+                }
+                select {
+                    option{
+                        background-color: #262832;
+                        border:1px solid #CA1C65;
+                        color: #fff;
+                    }
+                }
+                   
+            }
+            
+        }
+    }
+    p{
+        margin: 0 ;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    .commercial{
+        background-color: #CA1C65;
+        flex-basis: 40%;
+    }
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label p{
+    margin-top: 10px;
+    position: relative;
+    padding-left: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 70%;
+    cursor: pointer;
+}
+
+label p:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #CA1C65;
+    border-radius: 4px;
+    background-color: none;
+}
+
+input[type="checkbox"]:checked + label p:before {
+    background-color: #CA1C65; 
+}
+
+input[type="checkbox"]:checked + label p:after {
+    content: "✔";
+    position: absolute;
+    left: 3px;
+    top: -2px;
+    color: black;
+}
+
+
+.next{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        .nextbtn {
+            width: 60%;
+            height: 60px;
+            margin-bottom: 3%;
+            margin-left:30%;
+            background-color: #05C489;
+            border: none;
+            border-radius: 60px; 
+            margin: 5% auto 1%;
+            cursor: pointer;
+            transition: 0.3s ease;
+            &:hover{
+                background-color: #059b6b;
+            }
+                color: black;
+                font-weight: bold;
+                font-size: 20px;
+        }
+    p{
+        font-size: 16px;
+        font-weight: 500;
+    }
+    a{
+        color: #CA1C65;
+        text-decoration: none;
+        &:hover{
+            color: #660f33;
+        }
+    }
+}
+.custom{
+    color: #fff  !important;
+}
+.custom .ipv_selected-item{
+    background-color: rgb(0, 255, 72) !important;
+}
+

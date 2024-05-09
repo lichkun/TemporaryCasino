@@ -1,0 +1,39 @@
+<section>
+    <div class="panel">
+        <p>Step 3 of 3</p>
+    </div>
+    <div class="content">
+        <div class="details">
+            <p>Please tell us more about yourself!</p><br/>
+            <div class="field">
+                <img src="assets/img/icons/Vector(4.svg" alt="" style="top: 25%">
+                <input type="text" placeholder="First name">
+            </div>
+            <div class="field">
+                <img src="assets/img/icons/Vector3.svg" alt="" style="top: 11%">
+                <input type="text" placeholder="Last name">
+            </div>
+            <div class="field">
+                <lib-country-list class="custom-list"></lib-country-list>
+                <input type="text" placeholder="City">
+            </div>      
+            <p style="text-align: center;" class="small-text">On what day were you born?</p>
+            <hr>
+            <div class="container">
+                <p>Day</p>
+                <p>Month</p>
+                <p>Year</p>
+                <input type="text" maxlength="2" class="code-input" placeholder="- -" />
+                <input type="text" maxlength="2" class="code-input" placeholder="- -"/>
+                <input type="text" maxlength="4" class="code-input" placeholder="----"/>
+            </div>
+            <div class="next">
+                <button class="nextbtn" (click)="next()">Hop On!</button>
+                <p>Already have an account?<a href="#">Log in</a></p>
+            </div>
+        </div>
+        <div class="commercial">
+
+        </div>
+    </div>
+</section>
