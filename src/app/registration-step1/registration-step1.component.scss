@@ -40,6 +40,18 @@ section{
                     left: 3%;
                     top: 25%
                 }
+                p{
+                    position: absolute;
+                    right: 5%;
+                    top: 20%;
+                    font-size: 24px;
+                    color: #CA1C65;
+                    font-weight: 500;
+                    &:hover{
+                        color: #96154b;
+                        cursor: pointer;
+                    }
+                }
             }
             
         }
