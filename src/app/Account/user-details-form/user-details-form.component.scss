@@ -1,0 +1,87 @@
+
+form{
+    padding: 5%;
+}
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    flex: 1;
+    margin-right: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+ 
+
+  form input{
+    width: 80%;
+    height: 30px;
+    margin-bottom: 3%;
+    background: none;
+    font-size: 20px;
+    color: #fff;
+    padding: 0 10%;
+    outline: none;
+    border: 1px solid white;
+  }
+
+
+.input-with-arrow {
+    position: relative;
+  }
+  
+
+  .input-with-arrow .arrow,
+  .input-with-arrow .icon {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+  }
+  
+  .input-with-arrow .arrow {
+    right: 0;
+    width: 30px;
+    height: 100%;
+    color: #CA1C65;
+    top: -8px;
+
+  }
+  
+  .input-with-arrow .arrow:hover {
+    color: #06996a;
+  }
+  
+  .input-with-arrow .icon {
+    left: 0;
+    width: 30px;
+    height: 100%;
+    width: 20px; 
+    height: 20px; 
+  }
+  
+
+  input[readonly] {
+    background-color: #f8f9fa; 
+    cursor: not-allowed; 
+  }
+  
+  

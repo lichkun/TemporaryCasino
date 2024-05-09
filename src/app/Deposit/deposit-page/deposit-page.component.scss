@@ -1,0 +1,118 @@
+section.panel {
+    margin: 2% auto;
+    width: 35%;
+    height: auto;
+    background-color: #262832;
+    box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);
+}
+
+.welcome {
+    background-color: #040613;
+    height: 70px;
+    margin: 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.paymentForm {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16%;
+
+}
+
+.paymentForm .field {
+    position: relative;
+}
+
+.paymentForm .field img {
+    position: absolute;
+    left: 1%;
+    top: 25%;
+}
+
+.paymentForm input {
+    width: 60%;
+    height: 50px; 
+    margin-bottom: 3%;
+    background: none;
+    font-size: 16px; 
+    color: #fff;
+    padding: 0 10%;
+    outline: none;
+    border: 1px solid white;
+}
+
+
+button {
+    width: 40%;
+    height: 40px; 
+    margin-bottom: 3%;
+
+    background-color: #05C489;
+    color: black;
+    border-radius: 8px; 
+    font-weight: bold;
+    font-size: 16px; 
+    cursor: pointer;
+}
+
+p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 36px;
+    color: white;
+}
+
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 2%;
+    
+}
+
+.column {
+    width: 30%; 
+}
+
+button {
+    width: 100%;
+    padding: 12px; 
+    margin-bottom: 10px; 
+    background-color: #05C489;
+    color: #fff;
+    border: none;
+    border-radius: 64px; 
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #CA1C65; 
+    color:white;
+}
+
+.paymentForm p{
+    font-size: 28px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.additional-fields {
+    display: flex;
+}
+
+.additional-fields .field {
+    width: calc(30% - 9px);
+    margin-right: 1px; 
+}
+
+.setAmountButton{
+    width: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
