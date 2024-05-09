@@ -7,11 +7,15 @@ header{
     padding: 0.5em 1em;
     margin: 0;
     background-color: #040613;
-    h1{
-        color: #CA1C65;
-        font-size: 32px;
-        font-weight: bold;
-        text-transform: uppercase;
+    a{
+        text-decoration: none;
+        h1{
+            color: #CA1C65;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            
+        }
     }
     .header-content{
         display: flex;
