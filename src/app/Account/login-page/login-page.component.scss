@@ -63,7 +63,7 @@ section.panel {
 p {
     margin: 0;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 14px;
     color: white;
 }
 
@@ -76,3 +76,33 @@ p {
 .createaccount b{
     color:#CA1C65;
 }
+
+.form button:disabled {
+    background-color: #999; 
+    cursor: not-allowed; 
+    color: #666; 
+}
+
+.form .field p {
+    font-size: 11px; 
+    color: #CA1C65; 
+    margin-top: 5px;
+}
+
+.form .field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form .field .error-message {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+}
+
+.form .field .error-message p {
+    margin: 5px 0; 
+}
+
+
