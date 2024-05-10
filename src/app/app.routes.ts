@@ -8,6 +8,8 @@ import { RegistrationStep2and2Component } from './Registration/registration-step
 import { RegistrationStep3Component } from './Registration/registration-step3/registration-step3.component';
 import { RegistrationStep1Component } from './Registration/registration-step1/registration-step1.component';
 import { PasswordEditPageComponent } from './Account/password-edit-page/password-edit-page.component';
+import { PhoneEditPageComponent } from './Account/phone-edit-page/phone-edit-page.component';
+import { EmailEditPageComponent } from './Account/email-edit-page/email-edit-page.component';
 
 export const routes: Routes = [
   { path: '', component: MainComponent },
@@ -18,6 +20,8 @@ export const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'deposit', component: DepositPageComponent },
-  { path: 'password-edit', component: PasswordEditPageComponent }
+  { path: 'password-edit', component: PasswordEditPageComponent },
+  { path: 'phone-edit', component: PhoneEditPageComponent },
+  { path: 'email-edit', component: EmailEditPageComponent },
 ];
 

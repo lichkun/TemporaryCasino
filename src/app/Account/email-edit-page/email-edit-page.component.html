@@ -1,25 +1,23 @@
 <section class="panel">
     <div class="welcome">
-        <p>Welcome back!</p>
+        <p>Edit your E-mail!</p>
     </div>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
         <div class="field">
             <img src="assets/img/icons/Vector.svg" alt="" style="top: 25%">
-            <input type="text" placeholder="E-mail" formControlName="email">
+            <input type="text" placeholder="Enter your new E-mail" formControlName="email">
             <p *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Email must be valid</p>
         </div>
 
         <div class="field">
             <img src="assets/img/icons/Vector(1).svg" alt="" style="top: 11%">
-            <input type="password" placeholder="Password" formControlName="password">
+            <input type="password" placeholder="Enter your current Password" formControlName="password">
             <p *ngIf="!form.get('password')?.invalid && form.get('password')?.touched">Password is required</p>
             <p *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched">Password must have at least 8 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character</p>
         
         </div>
 
         <button type="submit" [disabled]="form.invalid">Log in</button>
-
-        <p class="createaccount" style="text-align: center;">Don’t have an account? <b>Create Account</b></p>
     </form>
 </section>

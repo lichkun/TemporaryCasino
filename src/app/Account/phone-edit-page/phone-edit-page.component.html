@@ -1,0 +1,16 @@
+<section class="panel">
+    <div class="welcome">
+        <p>Edit your phone!</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+        <div class="field">
+            <img src="assets/img/icons/Icon_Phone.svg" alt="" style="top: 20%">
+            <input type="text" placeholder="Enter new Phone Number" formControlName="phoneNumber">
+            <p *ngIf="form.get('phone')?.invalid && form.get('password')?.touched">Phone is Required</p>
+        </div>
+
+        <button type="submit" [disabled]="form.invalid">Continue</button>
+    </form>
+</section>

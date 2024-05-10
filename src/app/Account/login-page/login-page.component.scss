@@ -87,6 +87,14 @@ p {
     font-size: 11px; 
     color: #CA1C65; 
     margin-top: 5px;
+    
+}
+
+.field p {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2px;
+    
 }
 
 .form .field {
@@ -100,9 +108,4 @@ p {
     left: 0;
     width: 100%;
 }
-
-.form .field .error-message p {
-    margin: 5px 0; 
-}
-
 
