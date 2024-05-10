@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './corousel.component.html',
   styleUrls: ['./corousel.component.scss']
 })
-export class CorouselComponent  {
+export class CorouselComponent   {
   images: string[] = [
     'assets/img/1852x350_desktop_ua 1.png',
     'assets/img/1852x350_desktop_ua 1.png',

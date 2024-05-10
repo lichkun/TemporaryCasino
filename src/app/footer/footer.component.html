@@ -1,0 +1,55 @@
+<footer>
+    <div class="box-box">
+        <div *ngFor="let section of sections" class="box">
+            <span class="textmenu">{{ section.title }}</span>
+            <ul class="listmenu">
+              <li *ngFor="let item of section.items">
+                <a [href]="item.link">
+                  <span>{{ item.text }}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div  class="box">
+            <span class="textmenu">Платіжні методи</span>
+            <div class="payment-list">
+                <a *ngFor="let item of payments" href="">
+                    <img [src]="item.path" alt="">
+                </a>
+            </div>
+        </div>  
+        <div  class="box">
+            <span class="textmenu">Контакты</span>
+            <ul class="footer-contacts-list">
+                <li class="contacts-phone">0 (800) 213 283 (безкоштовно для України)</li>
+                <li><a href="mailto:support@favbet.ua">supportfavbet.ua</a></li>
+                <li class="contacts-icons-title">ПІДТРИМКА 24/7</li>
+                <li class="contacts-icons">
+                    <a href="mailto:support@favbet.ua" rel="noreferrer"><img src="assets/img/contacts/mail.svg" style="max-width: 25px;" alt="Mail"></a>
+                    <a onclick="window.ShowSupport()"><img src="assets/img/contacts/chat.svg" alt="Chat"></a>
+                    <a href="https://t.me/FavbetUAbot" target="_blank" rel="noreferrer">
+                        <img src="assets/img/contacts/telegram.svg" class="social-network" alt="Telegram">
+                    </a>
+                </li>
+            </ul>
+            <div class="menuTitle">Ми в соціальних мережах</div>
+            <ul class="footer-list footer-socials-list">
+                <li>
+                    <a href="https://www.facebook.com/favbetukraine" target="_blank" rel="noreferrer"><img src="assets/img/media/facebook.svg" alt="Facebook"></a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/@favbetua" target="_blank" rel="noreferrer"><img src="assets/img/media/youtube.svg" alt="Youtube"></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/favbet_ukraine/" target="_blank" rel="noreferrer"><img src="assets/img/media/instagram.svg" alt="Instagram"></a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com/@favbet.ukraine" target="_blank" rel="noreferrer"><img style="width: 24px; border-radius: 5px;" src="assets/img/media/tik_tok_icon.svg?v=4" alt="TikTok"></a>
+                </li>
+                <li>
+                    <a href="https://t.me/favbetukraine" target="_blank" rel="noreferrer"><img src="assets/img/media/telegram.svg" alt="Telegram"></a>
+                </li>
+            </ul>
+        </div>  
+    </div>
+</footer>
