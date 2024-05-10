@@ -18,11 +18,13 @@
     <div class="form-row">
       <div class="form-group">
         <label for="email">Email</label>
+        <a [routerLink]="['/login']" class="input-with-arrow">
         <div class="input-with-arrow">
           <img src="assets/img/icons/Vector.svg" alt="" class="icon" style="top: 12%; left: 3%;">
           <input type="email" id="email" name="email" class="form-control" placeholder="email199128@gmail.com" readonly>
           <span class="arrow">&#10148;</span>
         </div>
+        </a>
       </div>
       <div class="form-group">
         <label for="phone">Phone</label>
@@ -35,12 +37,14 @@
     </div>
     <div class="form-row">
         <div class="form-group">
-          <label for="language">Language</label>
-          <div class="input-with-arrow">
-            <img src="assets/img/icons/Vector(2).svg" alt="" class="icon" style="top: 12%; left: 3%;">
-            <input type="language" id="language" name="language" class="form-control" placeholder="English" readonly>
-            <span class="arrow">&#10148;</span>
-          </div>
+          <label for="language">Password</label>
+          <a [routerLink]="['/password-edit']">
+            <div class="input-with-arrow">
+                <img src="assets/img/icons/Vector(2).svg" alt="" class="icon" style="top: 12%; left: 3%;">
+                <input type="password" id="password" name="password" class="form-control" placeholder="******" readonly>
+                <span class="arrow">&#10148;</span>
+            </div>   
+          </a>
         </div>
         <div class="form-group">
           <label for="Location">Location</label>

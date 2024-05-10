@@ -7,6 +7,7 @@ import { RegistrationStep2Component } from './Registration/registration-step2/re
 import { RegistrationStep2and2Component } from './Registration/registration-step2and2/registration-step2and2.component';
 import { RegistrationStep3Component } from './Registration/registration-step3/registration-step3.component';
 import { RegistrationStep1Component } from './Registration/registration-step1/registration-step1.component';
+import { PasswordEditPageComponent } from './Account/password-edit-page/password-edit-page.component';
 
 export const routes: Routes = [
   { path: '', component: MainComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'registration3', component: RegistrationStep3Component },
   { path: 'login', component: LoginPageComponent },
   { path: 'user-profile', component: UserProfileComponent },
-  { path: 'deposit', component: DepositPageComponent }
+  { path: 'deposit', component: DepositPageComponent },
+  { path: 'password-edit', component: PasswordEditPageComponent }
 ];
 
