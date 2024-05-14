@@ -105,3 +105,8 @@ p {
     margin: 5px 0; 
 }
 
+.form button:disabled {
+    background-color: #999; 
+    cursor: not-allowed; 
+    color: #666; 
+}

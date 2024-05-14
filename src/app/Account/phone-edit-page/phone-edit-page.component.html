@@ -7,8 +7,8 @@
 
         <div class="field">
             <img src="assets/img/icons/Icon_Phone.svg" alt="" style="top: 20%">
-            <input type="text" placeholder="Enter new Phone Number" formControlName="phoneNumber">
-            <p *ngIf="form.get('phone')?.invalid && form.get('password')?.touched">Phone is Required</p>
+            <input type="text" placeholder="Enter new Phone Number" formControlName="phone">
+            <p *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched">Phone is Required</p>
         </div>
 
         <button type="submit" [disabled]="form.invalid">Continue</button>

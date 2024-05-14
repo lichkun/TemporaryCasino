@@ -17,13 +17,23 @@ export class PasswordEditPageComponent {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
+        Validators.required,
+        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[a-zA-Z\\d@$!%*?&]{8,}$")
+      ]),
+      password2: new FormControl('', [
         Validators.required,
         Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[a-zA-Z\\d@$!%*?&]{8,}$")
       ]),
     });
     
+  }
+
+  isTheSame(): boolean{
+
+    if(this.form.get('password') === this.form.get('passwordConfirm')) return true;
+
+    return false;
   }
 
   onSubmit() {
