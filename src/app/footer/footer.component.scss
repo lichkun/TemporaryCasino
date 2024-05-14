@@ -3,8 +3,8 @@
 
 footer{
     width: 100%;
-    padding: 2% 20%;
     background-color: #262832;
+    padding: 5% 0;
     font-family: 'Roboto', sans-serif  !important;
 }
 
@@ -12,6 +12,7 @@ footer{
     width: 60%;
     display: flex;
     flex: 1 1 0%;
+    margin: 0 auto;
     font-size: 14px;
     justify-content: space-between;
 }

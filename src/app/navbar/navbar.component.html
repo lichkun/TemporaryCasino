@@ -2,9 +2,11 @@
     <img src="assets/img/image 1.svg" alt="">
     <input type="text" placeholder="Enter game name">
     <ul class="games">
-        <li *ngFor="let game of games" class="game" >
-            <img [src]="game.path" [alt]="game.title">
-            <p>{{game.title}}</p>
-        </li>
+        <a [routerLink]="['/roullette']" *ngFor="let game of games">
+            <li  class="game" >
+                <img [src]="game.path" [alt]="game.title">
+                <p>{{game.title}}</p>
+            </li>
+        </a>
     </ul>
 </div>
