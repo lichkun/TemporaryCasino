@@ -27,5 +27,6 @@ export const routes: Routes = [
   { path: 'email-edit', component: EmailEditPageComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'roullette', component: RoulletteComponent },
+  { path: 'deposit', component: DepositPageComponent }
 ];
 
