@@ -10,6 +10,7 @@ import { RegistrationStep1Component } from './Registration/registration-step1/re
 import { PasswordEditPageComponent } from './Account/password-edit-page/password-edit-page.component';
 import { PhoneEditPageComponent } from './Account/phone-edit-page/phone-edit-page.component';
 import { EmailEditPageComponent } from './Account/email-edit-page/email-edit-page.component';
+import { LeaderboardComponent } from './Leaderboard/leaderboard/leaderboard.component';
 
 export const routes: Routes = [
   { path: '', component: MainComponent },
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'password-edit', component: PasswordEditPageComponent },
   { path: 'phone-edit', component: PhoneEditPageComponent },
   { path: 'email-edit', component: EmailEditPageComponent },
+  { path: 'leaderboard', component: LeaderboardComponent },
 ];
 
