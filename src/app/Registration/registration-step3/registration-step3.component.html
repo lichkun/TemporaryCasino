@@ -3,35 +3,40 @@
         <p>Step 3 of 3</p>
     </div>
     <div class="content">
-        <div class="details">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="details">
             <p>Please tell us more about yourself!</p><br/>
             <div class="field">
                 <img src="assets/img/icons/Vector4.svg" alt="" style="top: 25%">
-                <input type="text" placeholder="First name">
+                <input type="text" placeholder="First name" formControlName="Name">
+                <p class="error_message" *ngIf="form.get('Name')?.invalid && form.get('Name')?.touched && form.get('Name')?.hasError('required')">Name is required</p>
+                <p  class="error_message" *ngIf="form.get('Name')?.hasError('pattern') && form.get('Name')?.touched">The name must begin with a capital letter and be a maximum of 32 characters.</p>
             </div>
             <div class="field">
                 <img src="assets/img/icons/Vector3.svg" alt="" style="top: 11%">
-                <input type="text" placeholder="Last name">
+                <input type="text" placeholder="Last name" formControlName="Surname">
+                <p class="error_message" *ngIf="form.get('Surname')?.invalid && form.get('Surname')?.touched && form.get('Surname')?.hasError('required')">Surname is required</p>
+                <p  class="error_message" *ngIf="form.get('Surname')?.hasError('pattern') && form.get('Surname')?.touched">The surname must begin with a capital letter and be a maximum of 32 characters.</p>
             </div>
-            <div class="field">
-                <lib-country-list class="custom-list"></lib-country-list>
-                <input type="text" placeholder="City">
-            </div>      
+            <input type="text" placeholder="City" formControlName="City">
+            <p class="error_message" *ngIf="form.get('City')?.invalid && form.get('City')?.touched && form.get('City')?.hasError('required')">City is required</p>
+            <p class="error_message" *ngIf="form.get('City')?.hasError('pattern') && form.get('City')?.touched">The City must begin with a capital letter and be a maximum of 32 characters.</p>
+
+
             <p style="text-align: center;" class="small-text">On what day were you born?</p>
             <hr>
             <div class="container">
                 <p>Day</p>
                 <p>Month</p>
                 <p>Year</p>
-                <input type="text" maxlength="2" class="code-input" placeholder="- -" />
-                <input type="text" maxlength="2" class="code-input" placeholder="- -"/>
-                <input type="text" maxlength="4" class="code-input" placeholder="----"/>
+                <input type="text" maxlength="2" class="code-input" placeholder="- -"  formControlName="Day" />
+                <input type="text" maxlength="2" class="code-input" placeholder="- -" formControlName="Month"/>
+                <input type="text" maxlength="4" class="code-input" placeholder="----" formControlName="Year"/>
             </div>
             <div class="next">
-                <button class="nextbtn" (click)="next()">Hop On!</button>
+                <button class="nextbtn" (click)="next()" [disabled]="!form.valid">Hop On!</button>
                 <p>Already have an account?<a href="#">Log in</a></p>
             </div>
-        </div>
+        </form>
         <div class="commercial">
 
         </div>
