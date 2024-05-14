@@ -63,6 +63,11 @@ input[type="checkbox"]:checked + label p:after {
                 font-weight: bold;
                 font-size: 20px;
         }
+        .nextbtn:disabled {
+            background-color: #999; 
+            cursor: not-allowed; 
+            color: #666; 
+        }
     p{
         font-size: 16px;
         font-weight: 500;
@@ -88,4 +93,19 @@ input[type="checkbox"]:checked + label p:after {
         cursor: pointer;
         color: #660f33;
     }
+}
+
+
+
+.form .error_message{
+    font-size: 11px; 
+    color: #CA1C65; 
+    margin-top: 5px;
+}
+
+.field .error_message {
+    font-size: 12px; 
+    color: #CA1C65; 
+    margin-top: 5px; 
+    margin-bottom: 5px; 
 }

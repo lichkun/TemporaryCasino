@@ -3,14 +3,14 @@
         <p>Step 2 of 3</p>
     </div>
     <div class="content">
-        <div class="details">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="details">
             <p>Validate your account</p><br/>
             <p class="textinfo" style="text-align: center;">An SMS has been sent to 38000000000, please enter the 4-digit code provided</p>
             <div class="container">
-                <input type="text" maxlength="1" class="code-input" placeholder="-" />
-                <input type="text" maxlength="1" class="code-input" placeholder="-"/>
-                <input type="text" maxlength="1" class="code-input" placeholder="-"/>
-                <input type="text" maxlength="1" class="code-input" placeholder="-"/>
+                <input type="text" maxlength="1" class="code-input" placeholder="-" formControlName="digitfield1" />
+                <input type="text" maxlength="1" class="code-input" placeholder="-" formControlName="digitfield2"/>
+                <input type="text" maxlength="1" class="code-input" placeholder="-" formControlName="digitfield3"/>
+                <input type="text" maxlength="1" class="code-input" placeholder="-" formControlName="digitfield4"/>
             </div>
             <div class="field">
                 <span *ngIf="!isEditing" (click)="edit()">{{ value }}</span>
@@ -18,10 +18,11 @@
                 <button (click)="toggleEdit()" class="editphone">{{ isEditing ? 'Save' : 'Edit' }}</button>
               </div>
             <div class="next">
-                <button class="nextbtn"><a [routerLink]="['/registration3']">Resend Validation Code</a></button>
+                <button class="nextbtn" (click)="next()"  [disabled]="!form.get('digitfield1')?.valid || !form.get('digitfield2')?.valid || !form.get('digitfield3')?.valid || !form.get('digitfield4')?.valid">Resend Validation Code</button>
+
                 <p>Already have an account?<a href="#">Log in</a></p>
             </div>
-        </div>
+        </form>
         <div class="commercial">
 
         </div>

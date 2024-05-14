@@ -1,47 +1,52 @@
 import { Component } from '@angular/core';
-import { Country } from '../../Interfaces/Countries';
 import { CommonModule } from '@angular/common';
 import { NgxCountriesDropdownModule } from 'ngx-countries-dropdown';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-registration-step1',
     standalone: true,
     templateUrl: './registration-step1.component.html',
     styleUrl: './registration-step1.component.scss', 
-    imports: [CommonModule, NgxCountriesDropdownModule,RouterModule]
+    imports: [CommonModule, NgxCountriesDropdownModule,RouterModule, ReactiveFormsModule]
 })
 export class RegistrationStep1Component {
-isVisible: boolean= false;
-toggleEdit() {
-  this.isVisible = !this.isVisible;
-}
+  isVisible: boolean= false;
+  form!: FormGroup;
+
+  toggleEdit() {
+    this.isVisible = !this.isVisible;
+  }
   
-  countries: Country[] = [
-    {
-      title: "Ukraine",
-      path: "assets/img/flags/icons8-украина-32.png",
-      number: "+380",
-      val: "ua"
-    },
-    {
-      title: "Moldova",
-      path: "assets/img/flags/icons8-молдавия-32.png",
-      number: "+373",
-      val: "md"
-    },
-    {
-      title: "Germany",
-      path: "assets/img/flags/icons8-германия-32.png",
-      number: "+49",
-      val: "gr"
-    },
-  ]
+
   constructor(private router: Router){
 
   }
   next(){
     this.router.navigate(['/registration2'])
+  }
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[a-zA-Z\\d@$!%*?&]{8,}$")
+      ]),
+      ageConfirmation: new FormControl(false, Validators.requiredTrue)
+    });
+    
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log('Email - ', this.form.get('email')?.value);
+      console.log('Password - ', this.form.get('password')?.value);
+    } else {
+      console.log('Form is bruh');
+    }
   }
 }

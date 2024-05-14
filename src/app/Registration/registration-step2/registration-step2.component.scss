@@ -21,6 +21,14 @@
     color: black;
     font-weight: bold;
     font-size: 20px;
+
+    
+}
+
+.nextbtn:disabled {
+    background-color: #999 !important; 
+    cursor: not-allowed; 
+    color: #666; 
 }
 
 

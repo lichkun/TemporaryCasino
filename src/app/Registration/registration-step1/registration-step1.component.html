@@ -2,37 +2,40 @@
     <div class="panel">
         <p>Step 1 of 3</p>
     </div>
-    <div class="content">
+    <form class="content" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="details">
             <p>Please fill in your details below</p><br/>
             <div class="field">
                 <img src="assets/img/icons/Vector.svg" alt="" style="top: 25%">
-                <input type="text" placeholder="E-mail">
+                <input type="text" placeholder="E-mail" formControlName="email">
+                <p class="error_message" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Email must be valid</p>
             </div>
             <div class="field">
                 <img src="assets/img/icons/Vector(1).svg" alt="" style="top: 11%">
-                <input [type]=" isVisible ? 'text':'password'" placeholder="Password">
+                <input [type]=" isVisible ? 'text':'password'" placeholder="Password"  formControlName="password">
                 <button (click)="toggleEdit()" class="editphone">{{ isVisible ? 'Show' : 'Hide' }}</button>
+                <p class="error_message" *ngIf="form.get('password')?.invalid && form.get('password')?.touched && form.get('password')?.hasError('required')">Password is required</p>
+                <p  class="error_message" *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched">Password must have at least 8 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character</p>
             </div>
             <div class="field">
-                <!-- <img src="assets/img/icons/Vector(2).svg" alt="" style="top: 22%"> -->
-                <lib-country-list class="custom-list"></lib-country-list>
-                <!-- <select>
-                    <option *ngFor="let c of countries" [value]="c.val">{{c.number}} {{c.title}}</option>
-                </select>    -->
+
+                <lib-country-list [selectedCountryCode]="'ua'" class="custom-list">
+                    
+                </lib-country-list>
+
             </div>
             <div class="field">
-                <input type="checkbox">
-            </div>  
-            <input type="checkbox" id="myCheckbox">
-            <label for="myCheckbox"><p>By checking this box I accept the Terms and Conditions, Privacy policy, Player Protection and confirm that I am over 18 years of age</p></label>
+                <input type="checkbox" formControlName="ageConfirmation" id="myCheckbox"> 
+                <label for="myCheckbox"><p>By checking this box I accept the Terms and Conditions, Privacy policy, Player Protection and confirm that I am over 18 years of age</p></label>
+            </div>
+            
             <div class="next">
-                <button class="nextbtn" (click)="next()">Next</button>
+                <button type="submit" (click)="next()" [disabled]="form.invalid" class="nextbtn">Next</button>
                 <p>Already have an account?<a href="#">Log in</a></p>
             </div>
         </div>
         <div class="commercial">
 
         </div>
-    </div>
+    </form>
 </section>

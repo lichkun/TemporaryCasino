@@ -25,6 +25,8 @@
                 font-weight: bold;
                 font-size: 20px;
            }
+         
+        
         }
     p{
         margin-top: 1%;
@@ -83,4 +85,10 @@
         cursor: pointer;
         color: #660f33;
     }
+}
+
+.nextbtn:disabled {
+    background-color: #999; 
+    cursor: not-allowed; 
+    color: #666; 
 }
