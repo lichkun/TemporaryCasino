@@ -1,0 +1,47 @@
+.favgame-image{
+    width: 500x;
+    height: 500px;
+    background-color: #CA1C65;
+    border-radius: 1%;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #CA1C65;
+    border-radius: 5px;
+}
+
+
+.spent-text, .won-text{
+    font-weight: 500;
+    margin-top: 1px;
+
+    span{
+        color: #CA1C65;
+    }
+}
+
+
+
+
+.favgame-text, .gamename-text{
+    color: #05C489;
+
+}
+
+.favgame-panel{
+    display: flex;
+    flex-direction: column;
+}
+
+.favgame-panel h1{
+    text-align: center;
+}
+
+.favgame-information{
+    align-self: center;
+}
+
+.spent-text-icon {
+    display: flex;
+    align-items: center;
+}

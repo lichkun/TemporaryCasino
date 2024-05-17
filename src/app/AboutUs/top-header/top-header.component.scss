@@ -1,0 +1,47 @@
+.top-header-picture{
+    width: 100%;
+}
+
+.top-header {
+    position: relative;
+    width: fit-content; 
+  }
+  
+  
+  .top-logo-temp {
+    position: absolute;
+    bottom: -0.5%;
+    right: 10%;
+    width: 25%; 
+    height: 50%; 
+  }
+
+  .top-header-left{
+    font-size: 80px;
+    position: absolute;
+    top: 0.5%;
+    left: 10%;
+    width: 25%; 
+    height: 45%; 
+  }
+
+
+  .normal-title{
+    background-color: #CA1C65;
+    padding: 1%;
+  }
+
+  .inline-container {
+    display: inline;
+}
+
+.normal-title {
+    display: inline;
+}
+
+.block-title {
+    display: block;
+    margin: -2% 0 0 0; 
+    width: 43%;
+
+}

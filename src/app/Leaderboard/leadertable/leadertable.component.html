@@ -1,0 +1,20 @@
+<table>
+    <thead>
+      <tr>
+        <th class="number">#</th>
+        <th class="name">Name</th>
+        <th class="spentt">Amount Spent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of topUsers; let i = index" [ngClass]="{'gold': i === 0, 'silver': i === 1, 'bronze': i === 2}">
+        <td class="num">{{ i + 1 }}</td>
+        <td class="name">{{ user.name }}</td>
+       
+        <td class="spent">
+            {{ user.amountSpent  }}
+            <img class="icon" src="assets/img/icons/Icon_Money.svg" alt="" style="top: 0%">
+        </td>
+      </tr>
+    </tbody>
+  </table>
