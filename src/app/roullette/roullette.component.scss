@@ -7,6 +7,7 @@ html, body{
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	margin: 0;
 }
 
 #container{
@@ -261,19 +262,32 @@ html, body{
 .rtlbb2, .rtlbb3{
     margin-top: 42px;
 }
-
-.spinBtn{
+.dispnone{
+	display: none;
+}
+.spinBtn-container {
 	position: absolute;
-	margin-top: 329px;
-	margin-left: -392px;
+	top: 44.5%; 
+	left: 40%;
+	transform: translate(-50%, -50%); 
+	z-index: 5;
+  }
+  
+  .spinBtn {
 	font-size: 15px;
 	cursor: pointer;
 	background-color: #ffec00;
-	padding: 10px 5px;
-	border-radius: 100%;
+	padding: 10px 5px; 
+	border-radius: 100%; 
 	color: #000;
 	font-weight: bold;
-}
+	transition: 0.3s ease;
+  }
+  
+  .spinBtn:hover {
+	background-color: #ffee0086;
+  }
+  
 
 .redNum{
 	background-color: #E0080B;
@@ -332,6 +346,7 @@ html, body{
 	background-color:red;
 	color:#fff;
 	margin-left:22px;
+	
 }
 
 .clearBet .cdChipSpan{
@@ -360,7 +375,7 @@ html, body{
 }
 
 #pnContent{
-	border: 4px solid #d5b714;
+	border: 4px solid black;
 	width: 485px;
 	height: 31px;
 	position: relative;
@@ -385,9 +400,18 @@ html, body{
 }.pnGreen{
 	color: green;
 }
-/*betting table end*/
+.wheel {
+	animation: wheelRotate 5s linear ;
+}
+  
+.ballTrack {
+transition: transform 5s linear;
+}
+  
+.animate {
+animation: spinWheel 5s linear infinite;
+}
 
-/*wheel*/
 @keyframes wheelRotate {
 	from {
 		transform: rotate(0deg);
@@ -404,7 +428,14 @@ html, body{
 		transform: rotate(-359deg);
 	}
 }
-
+@keyframes ballStop {
+	from {
+	  transform: rotate(0deg);
+	}
+	to {
+	  transform: rotate(var(--degree ));
+	}
+  }
 .wheel {
 	height: 312px;
 	width: 312px;
@@ -443,33 +474,6 @@ html, body{
 	z-index: 1;
 }
 	
-.turretHandle{
-	background: radial-gradient( circle at 44%, #f3c620, #6a570f);
-	width: 87px;
-	height: 14px;
-	position: absolute;
-	left: 113px;
-	top: 148px;
-}
-
-.thendOne, .thendTwo{
-	border-radius: 100%;
-	background: radial-gradient( circle at 30% 30%, #f3c620, #1a1608 );
-	width: 25px;
-	height: 25px;
-	position: absolute;
-}
-
-.thendOne{
-	top: -6px;
-	left: -20px;
-}
-
-.thendTwo{
-	top: -6px;
-	left: 83px;
-}
-
 .outerRim {
 	position: absolute;
 	left:0;
