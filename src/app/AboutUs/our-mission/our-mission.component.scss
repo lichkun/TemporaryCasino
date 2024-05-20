@@ -1,0 +1,44 @@
+.our-mission-picture{
+    width: calc(100vw - 20px);
+    height: 500px;
+    position: relative;
+}
+
+.our-mission-text{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+}
+
+.our-mission-text span{
+    font-size: 72px;
+    background-color: #CA1C65;
+    margin-left: 10%;
+    padding: 1%;
+}
+
+
+
+.our-mission-container {
+    position: relative;
+}
+
+
+.our-mission-text {
+    position: absolute; 
+    top: 3.6%; 
+    left: 0; 
+}
+
+.our-mission-description {
+    position: absolute; 
+    bottom: 5%;
+    right: 10%; 
+    color: #E8E8E8;
+}
+
+.our-mission-description span{
+    font-size: 32px;
+    background-color: #191A23;
+    padding: 32px;
+}

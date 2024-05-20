@@ -1,16 +1,18 @@
 <header >
     <div class="header-content">
-        <a href=""><h1>Tempname</h1></a>
+        <h1>Tempname</h1>
         <div class="navbar">
-            <a>Casino</a>
-            <a>Games</a>
+            <a [routerLink]="['/']" > Casino</a>
+            <a [routerLink]="['/deposit']" >Deposit</a>
             <a [routerLink]="['/leaderboard']">Leaderboard</a>
+            <a [routerLink]="['/statistics']">Mystat</a>
+            <a [routerLink]="['/user-profile']">Profile</a>
+            <a [routerLink]="['/aboutus']">About Us</a>
+          
         </div>
     </div>
     <div class="header-content">
-        <nav>
-            <a [routerLink]="['/login']"><button class="login">Log In</button></a>
-            <a [routerLink]="['/registration']"><button class="register">Register</button></a>
-        </nav>
+        <button class="login">Log In</button>
+        <button class="register">Register</button>
     </div>
 </header>

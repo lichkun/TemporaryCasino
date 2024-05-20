@@ -1,0 +1,58 @@
+.table-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse; 
+  }
+  
+  th, td {
+    border: 1px solid #040613; 
+    padding: 8px; 
+  }
+  
+  th {
+    background-color: #05C489;
+    color: black;
+  }
+
+.spent {
+    width: 15%; 
+    text-align: right;
+  }
+
+  .number{
+    width: 5%; 
+    text-align: center;
+  }
+
+  .num{
+    text-align: center;
+  }
+
+  .name{
+    text-align: left;
+  }
+
+
+  .gold {
+    color: gold; 
+    font-weight: 900;
+  }
+  
+  .silver {
+    color: silver;  
+    font-weight: 700;
+  }
+  
+  .bronze {
+    color: #cd7f32; 
+    font-weight: 600;
+  }
+  
+  .icon{
+    fill: #CA1C65;
+  }

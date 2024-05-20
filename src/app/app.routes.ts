@@ -12,6 +12,8 @@ import { PhoneEditPageComponent } from './Account/phone-edit-page/phone-edit-pag
 import { EmailEditPageComponent } from './Account/email-edit-page/email-edit-page.component';
 import { LeaderboardComponent } from './Leaderboard/leaderboard/leaderboard.component';
 import { RoulletteComponent } from './roullette/roullette.component';
+import { StatisticPageComponent } from './Statistics/statistic-page/statistic-page.component';
+import { AboutUsPageComponent } from './AboutUs/about-us-page/about-us-page.component';
 
 export const routes: Routes = [
   { path: '', component: MainComponent },
@@ -27,6 +29,8 @@ export const routes: Routes = [
   { path: 'email-edit', component: EmailEditPageComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
   { path: 'roullette', component: RoulletteComponent },
-  { path: 'deposit', component: DepositPageComponent }
+  { path: 'deposit', component: DepositPageComponent },
+  { path: 'statistics', component: StatisticPageComponent },
+  { path: 'aboutus', component: AboutUsPageComponent },
 ];
 
