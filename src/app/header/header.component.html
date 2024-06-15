@@ -1,6 +1,6 @@
 <header >
     <div class="header-content">
-        <h1>Tempname</h1>
+        <a href=""><h1>Tempname</h1></a>
         <div class="navbar">
             <a [routerLink]="['/']" > Casino</a>
             <a [routerLink]="['/deposit']" >Deposit</a>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="header-content">
-        <button class="login">Log In</button>
-        <button class="register">Register</button>
+        <a [routerLink]="['/login']"><button class="login">Log In</button></a>
+        <a [routerLink]="['/registration']"><button class="register">Register</button></a>
     </div>
 </header>
