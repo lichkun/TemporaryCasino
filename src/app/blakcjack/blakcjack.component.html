@@ -1,0 +1,44 @@
+<section>
+
+<h2>Good Luck, {{ name }}!</h2>
+
+<div class="buttons">
+  <button (click)="startNewGame()">New Game</button>
+  <button (click)="hit()">Hit</button>
+  <button (click)="stand()">Stand</button>
+  <a [routerLink]="['/']"><button>Exit</button></a>
+</div>
+
+<p>Wallet: ${{ wallet }}</p>
+
+<div *ngIf="!currentBet" class="input-bet">
+  <form>
+    <input type="text" name="bet" placeholder="" class="bet" [(ngModel)]="inputValue" />
+  </form>
+  <button (click)="placeBet()">Place Bet</button>
+</div>
+
+<div *ngIf="gameOver" class="buttons">
+  <button (click)="startNewGame('continue')">Continue</button>
+</div>
+
+<p>Your Hand ({{ player?.count }})</p>
+<table class="cards">
+  <tr>
+    <td *ngFor="let card of player?.cards; let i = index">
+        <app-card [number]="card.number" [suit]="card.suit"/>
+    </td>
+  </tr>
+</table>
+
+<p>Dealer's Hand ({{ dealer?.count }})</p>
+<table class="cards">
+  <tr>
+    <td *ngFor="let card of dealer?.cards; let i = index">
+        <app-card [number]="card.number" [suit]="card.suit"/>
+    </td>
+  </tr>
+</table>
+
+<p style="margin: 0;">{{ message }}</p>
+</section>

@@ -14,27 +14,38 @@ export class NavbarComponent {
   games: Game[] = [
     {
       title: "favourite",
+      url: "/",
       path: "assets/img/1828884 1.svg"
     },
     {
       title: "all games",
+      url: "/",
       path: "assets/img/triangle.svg"
     },
     {
       title: "slots",
+      url: "/",
       path: "assets/img/triangle.svg"
     },
     {
       title: "new",
+      url: "/",
       path: "assets/img/triangle.svg"
     },
     {
       title: "wheel",
+      url: "/",
+      path: "assets/img/triangle.svg"
+    },
+    {
+      title: "blackjack",
+      url: "/blackjack/entry",
       path: "assets/img/triangle.svg"
     },
     {
       title: "roullettes",
-      path: "assets/img/triangle.svg"
+      path: "assets/img/triangle.svg",
+      url: "/roullette",
     },
   ];
 }

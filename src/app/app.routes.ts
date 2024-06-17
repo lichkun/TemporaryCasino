@@ -14,6 +14,8 @@ import { LeaderboardComponent } from './Leaderboard/leaderboard/leaderboard.comp
 import { RoulletteComponent } from './roullette/roullette.component';
 import { StatisticPageComponent } from './Statistics/statistic-page/statistic-page.component';
 import { AboutUsPageComponent } from './AboutUs/about-us-page/about-us-page.component';
+import { EntryComponent } from './blakcjack/entry/entry.component';
+import { GameWrapperComponent } from './blakcjack/game-wrapper/game-wrapper.component';
 
 export const routes: Routes = [
   { path: '', component: MainComponent },
@@ -28,6 +30,8 @@ export const routes: Routes = [
   { path: 'phone-edit', component: PhoneEditPageComponent },
   { path: 'email-edit', component: EmailEditPageComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
+  { path: 'blackjack/game', component: GameWrapperComponent},
+  { path: 'blackjack/entry', component: EntryComponent },
   { path: 'roullette', component: RoulletteComponent },
   { path: 'deposit', component: DepositPageComponent },
   { path: 'statistics', component: StatisticPageComponent },

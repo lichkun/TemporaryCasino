@@ -12,20 +12,24 @@ import { CommonModule } from '@angular/common';
 export class PlayItNowComponent {
   games: Game[] = [
     {
+      url: "/",
       title: "gates of olympus",
       path: "assets/img/slots/gates-of-olympus-slot.jpg"
     },
     {
+      url: "/",
       title: "gates of olympus",
       path: "assets/img/slots/the-dog-house-slot-1.jpg"
     }
     ,{
+      url: "/",
       title: "gates of olympus",
       path: "assets/img/slots/Juicy-Fruits-Slot-2022.2e16d0ba.fill-600x340.webp" 
     },
     {
       title: "gates of olympus",
-      path: "assets/img/slots/images.jpg"
+      path: "assets/img/slots/images.jpg",
+      url: "/"
     },
   ];
 }
