@@ -7,8 +7,48 @@
     height: calc(100vh - 180px); 
     width: calc(100vw - 90px);
     margin: 48px;
+}
+
+.favouriteGamePanel { 
+    grid-area: 1 / 1 / 12 / 4;  
+    background-color: #262832; 
+    height: 100%; 
+    width: 100%; 
+    box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);
+}
+
+.monthStatisticPanel { 
+    grid-area: 1 / 4 / 7 / 7;  
+    background-color: #262832; 
+    height: 100%; 
+    width: 100%; 
+    box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);
+}
+
+.dayStaisticPanel { 
+    grid-area: 7 / 4 / 12 / 7;  
+    background-color: #262832; 
+    height: 100%; 
+    width: 100%; 
+    box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);
+}
+
+@media (max-width: 768px) {
+    .parent {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-row-gap: 20px;
+        grid-column-gap: 0;
+        height: auto;
+        width: auto;
+        margin: 0;
+        display: block;
     }
     
-    .favouriteGamePanel { grid-area: 1 / 1 / 12 / 4;  background-color: #262832; height: 100%; width: 100%; box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);}
-    .monthStatisticPanel { grid-area: 1 / 4 / 7 / 7;  background-color: #262832; height: 100%; width: 100%; box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);}
-    .dayStaisticPanel { grid-area: 7 / 4 / 12 / 7;  background-color: #262832; height: 100%; width: 100%; box-shadow: 15px 15px 50px rgba(202, 28, 101, 0.15);}
+    .favouriteGamePanel, 
+    .monthStatisticPanel, 
+    .dayStaisticPanel {
+        grid-area: auto / auto / auto / auto;
+        height: auto;
+    }
+}

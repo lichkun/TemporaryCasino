@@ -36,3 +36,17 @@
 .amount{
     color: #05C489;
 }
+
+@media (max-width: 768px) {
+
+    .statistic-item {
+        margin-right: 80px;
+    }
+
+    .statistics{
+        padding: 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+}

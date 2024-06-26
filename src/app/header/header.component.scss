@@ -1,67 +1,128 @@
-*{margin: 0;padding: 0;box-sizing: border-box;}
-header{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     font-family: sans-serif;
     padding: 0.5em 1em;
     margin: 0;
     background-color: #040613;
-    a{
-        text-decoration: none;
-        h1{
-            color: #CA1C65;
-            font-size: 32px;
-            font-weight: bold;
-            text-transform: uppercase;
-            
-        }
+  }
+  
+  header a {
+    text-decoration: none;
+  }
+  
+  header h1 {
+    color: #CA1C65;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    color: #BEBEA8;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .navbar {
+    display: flex;
+    margin: 0 70px;
+    align-items: center;
+    padding: 0.5em;
+  }
+  
+  .navbar a {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 1em;
+    transition: 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    color: #e2e2c7;
+    cursor: pointer;
+  }
+  
+  button {
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 20px;
+    font-size: 20px;
+    font-family: inherit;
+    padding: 7.5px;
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+  
+  button.login {
+    background-color: #fff;
+  }
+  
+  button.login:hover {
+    background-color: #d1d1d1;
+  }
+  
+  button.register {
+    background-color: #05C489;
+  }
+  
+  button.register:hover {
+    background-color: #06996a;
+  }
+  
+  .menu-icon {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #040613;
     }
-    .header-content{
-        display: flex;
-        color: #BEBEA8;
-        .navbar{
-            margin: 0 70px;
-            align-items: center;
-            padding: 0.5em;
-            justify-content: space-between;
-            a{
-                font-size: 20px;
-                font-weight: bold;
-                margin-right: 1em;
-                transition: 0.3s ease;
-                &:hover{
-                    color: #e2e2c7;
-                    cursor: pointer;
-                }
-            }
-        }
+    
+    .navbar.show {
+      display: flex;
     }
-    button{
-        height: 40px;
-        border: none;
-        border-radius: 5px;
-        margin-right: 20px;
-        font-size: 20px;
-        font-family: inherit;
-        padding: 7.5px;
-        transition: 0.3s ease;
-        &:hover{
-            cursor: pointer;
-        }
+    
+    .navbar a,
+    .navbar button {
+      margin: 0.5em 0;
+      width: 100%;
+      text-align: center;
     }
-    button.login{
-        background-color: #fff;
-        &:hover{
-            background-color: #d1d1d1;
-            cursor: pointer;
-        }
+  
+    .navbar button {
+      margin-right: 0;
     }
-    button.register{
-        background-color: #05C489;
-        &:hover{
-            background-color: #06996a;
-            cursor: pointer;
-        }
+  
+    .menu-icon {
+      display: block;
     }
-}
+  
+    .header-content {
+      justify-content: space-between;
+    }
+  
+    .logo.hide {
+      display: none;
+    }
+  }
+  

@@ -99,3 +99,13 @@ a{
   .footer-socials-list > * {
     margin-right: 10px;
   }
+
+
+  @media (max-width: 768px) {
+
+    footer{
+      display: none;
+    }
+
+
+  }

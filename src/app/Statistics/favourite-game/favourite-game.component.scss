@@ -1,13 +1,13 @@
-.favgame-image{
-    width: 500x;
-    height: 500px;
+.favgame-image {
+    width: 50%;
+    height: 50%;
     background-color: #CA1C65;
     border-radius: 1%;
-    margin: auto;
     background-size: cover;
     background-position: center;
     border: 2px solid #CA1C65;
     border-radius: 5px;
+    display: flex; 
 }
 
 
@@ -38,10 +38,16 @@
 }
 
 .favgame-information{
-    align-self: center;
+    
+    display: block;
+    margin: auto; /* Centers horizontally */
+    justify-content: center; 
+    align-items: center; 
 }
 
 .spent-text-icon {
     display: flex;
     align-items: center;
 }
+
+
