@@ -16,6 +16,16 @@ export class EntryComponent {
 
   constructor(private router: Router) {}
 
+
+
+  ngOnInit() {
+
+    const userId = sessionStorage.getItem('userId');
+      if (!userId) {
+        this.router.navigate(['/login']);
+      }
+  }
+
   startGame(event: Event) {
     event.preventDefault();
     const money = this.wallet.slice(1);

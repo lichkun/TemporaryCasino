@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import {  Router, RouterModule } from '@angular/router';
 import { CardComponent } from '../card/card.component';
 
+import { AuthorizationService } from '../Services/authorization.service';
+
 @Component({
   selector: 'app-blakcjack',
   standalone: true,
@@ -26,6 +28,13 @@ export class GameComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+
+    const userId = sessionStorage.getItem('userId');
+      if (!userId) {
+        this.router.navigate(['/login']);
+      }
+
+   
     if (this.locationState) {
       this.player = {
         name: this.locationState.name,

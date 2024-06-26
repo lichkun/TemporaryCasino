@@ -2,6 +2,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthorizationService } from '../Services/authorization.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,6 +14,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   styleUrl: './roullette.component.scss',
  })
  export class RoulletteComponent  {
+
+
+
+  ngOnInit(): void {
+    const userId = sessionStorage.getItem('userId');
+    if (!userId) {
+      this.router.navigate(['/login']);
+    } else {
+
+    }
+    
+  }
     wheelAnimation: string = "end";
     bankValue: number = 1000;
     currentBet:number = 0;
@@ -27,7 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     isPlacingBet: boolean = true;
     blocks: number[] = Array.from({ length: 11 }, (_, i) => i + 1);
 
-    constructor(private el: ElementRef, private renderer: Renderer2) {}
+    constructor(private el: ElementRef, private renderer: Renderer2, private authService: AuthorizationService,  private router: Router) {}
 
     @ViewChild('pnContent') pnContent!: ElementRef;
     @ViewChild('container') container!: ElementRef;

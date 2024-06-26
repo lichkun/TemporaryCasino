@@ -4,6 +4,7 @@ import { NgxCountriesDropdownModule } from 'ngx-countries-dropdown';
 import { FormControl, FormGroup, FormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthorizationService } from '../../Services/authorization.service';
 
 @Component({
   selector: 'app-registration-step3',
@@ -13,13 +14,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './registration-step3.component.scss'
 })
 export class RegistrationStep3Component {
-  constructor(private router: Router){
-
-    
+  constructor(private router: Router, private authService: AuthorizationService){
 
   }
 
   form!: FormGroup;
+
+  
 
   
   
@@ -37,19 +38,45 @@ export class RegistrationStep3Component {
   }
 
   onSubmit() {
-    if(this.form.valid) console.log('Valid!')
-      else  console.log('Not Valid!')
-    if (this.form.valid) {
-      console.log(this.form.get('Day')?.value + '' + this.form.get('Month')?.value + '' + this.form.get('Year')?.value)
-     
-    } else {
-      console.log('Form is bruh' + this.form.get('Day')?.value + '' + this.form.get('Month')?.value + '' + this.form.get('Year')?.value);
-
-    }
+   
   }
 
   next(){
-    this.router.navigate([''])
+    if (this.form.valid) {
+      console.log('Form is valid!');
+  
+      const user = {
+        email: sessionStorage.getItem('registrationEmail'),
+        password: sessionStorage.getItem('registrationPassword'),
+        phone: sessionStorage.getItem('registrationPhone'),
+        first_Name: this.form.get('Name')!.value,
+        last_Name: this.form.get('Surname')!.value,
+        city: 'test',
+        cityId: 1,
+        birthday: '2000-01-01',
+        pfp: '',
+        balance: 0
+      };
+  
+      this.authService.createUser(user).subscribe({
+        next: (response) => {
+          console.log('User created successfully:', response);
+        },
+        error: (error) => {
+          console.error('Error creating user:', error);
+          console.log(user); // Logging the user object here
+        }
+      });
+
+      this.router.navigate([''])
+  
+    } else {
+      console.log('Form is invalid');
+      console.log('Day:', this.form.get('Day')?.value);
+      console.log('Month:', this.form.get('Month')?.value);
+      console.log('Year:', this.form.get('Year')?.value);
+    }
+    
   }
 
   

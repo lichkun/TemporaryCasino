@@ -1,6 +1,8 @@
 
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
+import { AuthorizationService } from '../../Services/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-deposit-page',
@@ -12,7 +14,21 @@ import { FormsModule } from '@angular/forms';
 export class DepositPageComponent {
   amount: number = 0;
 
-  constructor() { }
+  constructor(private authService: AuthorizationService,  private router: Router){
+
+    
+
+  }
+
+
+  ngOnInit(): void {
+    const userId = sessionStorage.getItem('userId');
+    if (!userId) {
+      this.router.navigate(['/login']);
+    } else {
+
+    }
+  }
 
   updateAmount(value: number) {
     this.amount = value;

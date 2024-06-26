@@ -26,7 +26,13 @@ export class RegistrationStep1Component {
 
   }
   next(){
-    this.router.navigate(['/registration2'])
+    if (this.form.valid) {
+      sessionStorage.setItem('registrationEmail', this.form.get('email')!.value);
+      sessionStorage.setItem('registrationPassword', this.form.get('password')!.value);
+      this.router.navigate(['/registration2']);
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
   ngOnInit(): void {
@@ -41,12 +47,5 @@ export class RegistrationStep1Component {
     
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      console.log('Email - ', this.form.get('email')?.value);
-      console.log('Password - ', this.form.get('password')?.value);
-    } else {
-      console.log('Form is bruh');
-    }
-  }
+
 }

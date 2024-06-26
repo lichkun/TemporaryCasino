@@ -17,7 +17,14 @@ export class RegistrationStep2Component {
 
   }
   next(){
-    this.router.navigate(['/registration2and2'])
+    if (this.form.valid) {
+      sessionStorage.setItem('registrationPhone', this.form.get('phoneNumber')!.value);
+      this.router.navigate(['/registration2and2'])
+    } else {
+      console.log('Form is bruh');
+    }
+
+   
   }
 
   ngOnInit(): void {

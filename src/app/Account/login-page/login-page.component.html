@@ -13,7 +13,7 @@
         <div class="field">
             <img src="assets/img/icons/Vector(1).svg" alt="" style="top: 11%">
             <input type="password" placeholder="Password" formControlName="password">
-            <p *ngIf="!form.get('password')?.invalid && form.get('password')?.touched">Password is required</p>
+            <p *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Password is required</p>
             <p *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched">Password must have at least 8 characters, at least one uppercase letter, one lowercase letter, one digit, and one special character</p>
         
         </div>

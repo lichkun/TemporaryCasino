@@ -1,18 +1,21 @@
 <header>
-    <div class="header-content">
-      <a href="" class="logo" [class.hide]="isMenuOpen"><h1>Lucky Star</h1></a>
-      <div class="menu-icon" (click)="toggleMenu()">☰</div>
-      <div class="navbar" [class.show]="isMenuOpen">
-        <a routerLink="/">Casino</a>
-        <a routerLink="/deposit">Deposit</a>
-        <a routerLink="/leaderboard">Leaderboard</a>
-        <a routerLink="/statistics">Mystat</a>
-        <a routerLink="/user-profile">Profile</a>
-        <a routerLink="/aboutus">About</a>
-        <a routerLink="/login"><button class="login">Log In</button></a>
-        <a routerLink="/registration"><button class="register">Register</button></a>
+  <div class="header-content">
+    <a href="" class="logo" [class.hide]="isMenuOpen"><h1>Lucky Star</h1></a>
+    <div class="menu-icon" (click)="toggleMenu()">☰</div>
+    <div class="navbar" [class.show]="isMenuOpen">
+      <a routerLink="/">Casino</a>
+      <a routerLink="/deposit" *ngIf="isLoggedIn()">Deposit</a>
+      <a routerLink="/leaderboard">Leaderboard</a>
+      <a routerLink="/statistics" *ngIf="isLoggedIn()">Mystat</a>
+      <a routerLink="/user-profile" *ngIf="isLoggedIn()">Profile</a>
+      <a routerLink="/aboutus">About</a>
+
+      <div class="auth-buttons">
+        <a routerLink="/login" *ngIf="!isLoggedIn()" class="login"><button>Log In</button></a>
+        <a routerLink="/registration" *ngIf="!isLoggedIn()" class="register"><button>Register</button></a>
+        <button (click)="logout()" *ngIf="isLoggedIn()">Log Out</button>
       </div>
     </div>
-   
-  </header>
-  
+    
+  </div>
+</header>
