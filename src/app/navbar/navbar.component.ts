@@ -39,7 +39,7 @@ export class NavbarComponent {
     },
     {
       title: "blackjack",
-      url: "/blackjack/entry",
+      url: "/blackjack/game",
       path: "assets/img/triangle.svg"
     },
     {

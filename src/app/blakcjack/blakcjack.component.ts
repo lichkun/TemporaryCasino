@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input,  OnInit } from '@angular/core';
+import { Component,   OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {  Router, RouterModule } from '@angular/router';
 import { CardComponent } from '../card/card.component';
 
 import { AuthorizationService } from '../Services/authorization.service';
+import { BlackjackService } from '../Services/blackjack.service';
 
 @Component({
   selector: 'app-blakcjack',
@@ -15,7 +16,6 @@ import { AuthorizationService } from '../Services/authorization.service';
 })
 export class GameComponent implements OnInit {
   deck: any[] = [];
-  @Input() locationState: any;
   dealer: any = null;
   player: any = null;
   name: string = '';
@@ -25,24 +25,17 @@ export class GameComponent implements OnInit {
   gameOver: boolean = false;
   message: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authservice :AuthorizationService,
+              private blackjacService : BlackjackService
+   ) {}
 
   ngOnInit() {
-
-    const userId = sessionStorage.getItem('userId');
-      if (!userId) {
-        this.router.navigate(['/login']);
-      }
-
-   
-    if (this.locationState) {
-      this.player = {
-        name: this.locationState.name,
-        wallet: this.locationState.wallet
-      };
+    let userId = sessionStorage.getItem('userId');
+    if (!userId) {
+      this.router.navigate(['/login']);
     }
-    this.name = this.locationState?.name || '';
-    this.wallet = this.locationState?.wallet || 0;
+    this.authservice.authentificate(Number(userId));
+
     this.startNewGame();
     document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
@@ -83,6 +76,24 @@ export class GameComponent implements OnInit {
   }
 
   startNewGame(type?: string) {
+      this.authservice.getCurrentUser().subscribe(
+        cuurrentuser => {
+          if (cuurrentuser) {
+            this.player = {
+              name: cuurrentuser.first_Name,
+              wallet: cuurrentuser.balance
+            };
+  
+            this.name = cuurrentuser.first_Name || '';
+            this.wallet = cuurrentuser.balance || 0;
+          } else {
+            console.error('User not found or not logged in');
+          }
+        },
+        error => {
+          console.error('Error fetching user:', error);
+        }
+      );
     if (type === 'continue') {
       if (this.wallet > 0) {
         this.currentBet = null;
@@ -123,6 +134,7 @@ export class GameComponent implements OnInit {
       this.message = 'Пожалуйста, делайте ставки целыми числами.';
     } else {
       const wallet = this.wallet - currentBet;
+      this.blackjacService.placeBet(currentBet);
       const deck = (this.deck.length < 10) ? this.generateDeck() : this.deck;
       const { updatedDeck, player, dealer } = this.dealCards(deck);
 
@@ -180,9 +192,11 @@ export class GameComponent implements OnInit {
             this.message = 'Dealer wins...';
           } else if (winner === 'player') {
             this.wallet += this.currentBet * 2;
+            this.blackjacService.winBet(this.currentBet * 2);
             this.message = 'You win!';
           } else {
             this.wallet += this.currentBet;
+            this.blackjacService.winBet(this.currentBet);
             this.message = 'Push.';
           }
         }

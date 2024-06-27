@@ -25,7 +25,9 @@ export class AuthorizationService {
   authorizeUser(email: string, password: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/api/User/authorization/${email}/${password}`);
   }
-
+  authentificate(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/User/authentificate/${id}`);
+  }
   isLoggedIn(): boolean {
     return sessionStorage.getItem('userId') !== null;
   }
