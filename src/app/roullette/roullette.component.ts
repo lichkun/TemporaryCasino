@@ -1,9 +1,9 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {  Component, ElementRef,  Renderer2, ViewChild } from '@angular/core';
 import { AuthorizationService } from '../Services/authorization.service';
 import { Router } from '@angular/router';
+import { GameService } from '../Services/blackjack.service';
+
 
 
 @Component({
@@ -24,7 +24,14 @@ import { Router } from '@angular/router';
     } else {
 
     }
-    
+    this.authService.authentificate(Number(userId));
+    this.authService.getCurrentUser().subscribe(
+      cuurrentuser => {
+        if (cuurrentuser) {
+          this.bankValue = cuurrentuser.balance || 0;
+        } 
+      },
+    );
   }
     wheelAnimation: string = "end";
     bankValue: number = 1000;
@@ -41,7 +48,7 @@ import { Router } from '@angular/router';
     isPlacingBet: boolean = true;
     blocks: number[] = Array.from({ length: 11 }, (_, i) => i + 1);
 
-    constructor(private el: ElementRef, private renderer: Renderer2, private authService: AuthorizationService,  private router: Router) {}
+    constructor(private el: ElementRef, private renderer: Renderer2, private authService: AuthorizationService,  private router: Router, private gameService : GameService) {}
 
     @ViewChild('pnContent') pnContent!: ElementRef;
     @ViewChild('container') container!: ElementRef;
@@ -410,12 +417,14 @@ import { Router } from '@angular/router';
     }
  
     spin(){
+        this.gameService.placeBet(this.wager)
         this.isSpinBtn = !this.isSpinBtn;
         this.isPlacingBet = false;
         const winningSpin = Math.floor(Math.random() * 36);
         this.spinWheel(winningSpin);
         setTimeout(() => {
         if (this.numbersBet.includes(winningSpin)) {
+          
           let winValue = 0;
           let betTotal = 0;
           this.bet.forEach((betItem: any) => {
@@ -424,6 +433,7 @@ import { Router } from '@angular/router';
               this.bankValue += betItem.odds * betItem.amt + betItem.amt;
               winValue += betItem.odds * betItem.amt;
               betTotal += betItem.amt;
+              this.gameService.winBet(betItem.odds * betItem.amt + betItem.amt)
             }
           });
           this.win(winningSpin, winValue, betTotal);
@@ -447,24 +457,27 @@ import { Router } from '@angular/router';
           this.gameOver();
         }
         this.isPlacingBet = true;
+        
       }, 7000);
+      
     }
+    wheelState = 'spin'; // Начальное состояние анимации
+    ballState = 'spin';
+    degree = 0;
     async spinWheel(winningSpin: number) {
-      const wheel = this.wheel.nativeElement;
-      const ballTrack = this.ballTrack.nativeElement;
-      const degree = this.calculateDegree(winningSpin);
-
-      wheel.classList.add('animate');
-      ballTrack.classList.add('ballRotate');
-
-      await this.delay(2000);
-
-      ballTrack.classList.remove('ballRotate');
-      ballTrack.classList.add('ballStop');
-      wheel.classList.remove('animate');
-
-      //await this.delay(3000);
-      ballTrack.style.transform = `rotate(-${degree}deg)`;
+      this.wheelState = 'spin';
+      this.ballState = 'spin';
+      this.degree = this.calculateDegree(winningSpin);
+      // Пример изменения угла для стоп анимации
+      setTimeout(() => {
+        this.ballState = 'slow';
+      }, 2000);
+      setTimeout(() => {
+        this.ballState = 'stop';
+      }, 6000);
+      setTimeout(() => {
+        this.wheelState = 'stop';
+      }, 9000);
     }
   
     calculateDegree(winningSpin: number): number {

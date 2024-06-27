@@ -1,8 +1,6 @@
 <div id="container" #container>
-  <div class="spinBtn-container">
-    <div *ngIf="isSpinBtn" class="spinBtn" (click)="spin()">spin</div>
-  </div>
-  <div  class="wheel"  #wheel >
+  
+  <div [@spinWheel]="wheelState"  class="wheel"  #wheel >
     <div *ngIf="showNotification" id="notification">
         <span class="nSpan">Bankrupt</span>
         <div class="nBtn" (click)="resetGame()">Play again</div>
@@ -13,7 +11,7 @@
         <div class="block"></div>
     </div>
       <div class="pocketsRim"></div>
-      <div class="ballTrack"  #ballTrack >
+      <div [@spinBall]="ballState" class="ballTrack"  #ballTrack >
           <div class="ball"></div>
       </div>
       <div class="pockets"></div>
@@ -75,6 +73,9 @@
             </div>
             <div class="cdChip clearBet" (click)="clearBetHandler()">
               <span class="cdChipSpan">clear</span>
+            </div>
+            <div class="spinBtn-container">
+              <div *ngIf="isSpinBtn" class="spinBtn" (click)="spin()">spin</div>
             </div>
           </div>
           <div class="bankContainer">

@@ -267,8 +267,8 @@ html, body{
 }
 .spinBtn-container {
 	position: absolute;
-	top: 44.5%; 
-	left: 40%;
+	top: 50%; 
+	right: -5%;
 	transform: translate(-50%, -50%); 
 	z-index: 5;
   }
@@ -324,7 +324,7 @@ html, body{
     color: #000;
 	cursor: pointer;
 }
-
+ 
 .cdChipSpan{
 	display: inherit;
 	position: relative;
@@ -405,11 +405,11 @@ html, body{
 }
   
 .ballTrack {
-transition: transform 5s linear;
-}
+	transition: transform 5s linear ;
+ }
   
 .animate {
-animation: spinWheel 5s linear infinite;
+animation: transform 5s linear infinite;
 }
 
 @keyframes wheelRotate {

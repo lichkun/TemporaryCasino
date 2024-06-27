@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class BlackjackService {
+export class GameService {
   private apiUrl = 'https://localhost:7105'; 
 
   placeBet = async (bet: number) => {

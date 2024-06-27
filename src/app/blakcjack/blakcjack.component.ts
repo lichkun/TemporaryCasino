@@ -5,7 +5,7 @@ import {  Router, RouterModule } from '@angular/router';
 import { CardComponent } from '../card/card.component';
 
 import { AuthorizationService } from '../Services/authorization.service';
-import { BlackjackService } from '../Services/blackjack.service';
+import { GameService } from '../Services/blackjack.service';
 
 @Component({
   selector: 'app-blakcjack',
@@ -26,7 +26,7 @@ export class GameComponent implements OnInit {
   message: string | null = null;
 
   constructor(private router: Router, private authservice :AuthorizationService,
-              private blackjacService : BlackjackService
+              private blackjacService : GameService
    ) {}
 
   ngOnInit() {
