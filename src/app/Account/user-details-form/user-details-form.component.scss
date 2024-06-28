@@ -85,5 +85,17 @@ form{
   }
   
   @media (max-width: 768px){
-    
+    form input
+      {
+          font-size: var(--fs16) !important;
+          padding-left: 17% !important;
+      }
+      img{
+        width: 20px !important;
+        height: 20px !important;
+      }
+      .arrow{
+        right: -10% !important;
+        top: -10% !important;
+      }
   }

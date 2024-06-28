@@ -110,3 +110,11 @@ p {
     cursor: not-allowed; 
     color: #666; 
 }
+@media (max-width: 768px) {
+    section.panel {
+        width: 80% ;
+      }
+      p{
+        margin-left: 10%;
+      }
+}

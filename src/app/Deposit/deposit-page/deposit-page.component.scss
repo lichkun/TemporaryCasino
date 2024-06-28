@@ -116,3 +116,11 @@ button:hover {
     margin-top: 5%;
     margin-bottom: 5%;
 }
+@media (max-width: 768px) {
+    section.panel {
+        width: 80% ;
+      }
+      p{
+        margin-left: 10%;
+      }
+}
