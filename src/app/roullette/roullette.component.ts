@@ -461,23 +461,22 @@ import { GameService } from '../Services/blackjack.service';
       }, 7000);
       
     }
-    wheelState = 'spin'; // Начальное состояние анимации
-    ballState = 'spin';
-    degree = 0;
     async spinWheel(winningSpin: number) {
-      this.wheelState = 'spin';
-      this.ballState = 'spin';
-      this.degree = this.calculateDegree(winningSpin);
-      // Пример изменения угла для стоп анимации
-      setTimeout(() => {
-        this.ballState = 'slow';
-      }, 2000);
-      setTimeout(() => {
-        this.ballState = 'stop';
-      }, 6000);
-      setTimeout(() => {
-        this.wheelState = 'stop';
-      }, 9000);
+      const wheel = this.wheel.nativeElement;
+      const ballTrack = this.ballTrack.nativeElement;
+      const degree = this.calculateDegree(winningSpin);
+
+      wheel.classList.add('animate');
+      ballTrack.classList.add('ballRotate');
+
+      await this.delay(1000);
+
+      ballTrack.classList.remove('ballRotate');
+      ballTrack.classList.add('ballStop');
+      wheel.classList.remove('animate');
+
+      //await this.delay(3000);
+      ballTrack.style.transform = `rotate(-${degree}deg)`;
     }
   
     calculateDegree(winningSpin: number): number {

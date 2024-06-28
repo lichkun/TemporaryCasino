@@ -1,6 +1,6 @@
 <div id="container" #container>
   
-  <div [@spinWheel]="wheelState"  class="wheel"  #wheel >
+  <div   class="wheel"  #wheel >
     <div *ngIf="showNotification" id="notification">
         <span class="nSpan">Bankrupt</span>
         <div class="nBtn" (click)="resetGame()">Play again</div>
@@ -11,7 +11,7 @@
         <div class="block"></div>
     </div>
       <div class="pocketsRim"></div>
-      <div [@spinBall]="ballState" class="ballTrack"  #ballTrack >
+      <div  class="ballTrack"  #ballTrack >
           <div class="ball"></div>
       </div>
       <div class="pockets"></div>
