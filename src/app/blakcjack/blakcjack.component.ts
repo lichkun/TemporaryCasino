@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component,   OnInit } from '@angular/core';
+import { Component,   HostListener,   OnDestroy,   OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {  Router, RouterModule } from '@angular/router';
 import { CardComponent } from '../card/card.component';
 
 import { AuthorizationService } from '../Services/authorization.service';
 import { GameService } from '../Services/blackjack.service';
+import { SessionService } from '../Services/session.service';
+import { Session } from '../Interfaces/Session';
+import { User } from '../Interfaces/User';
 
 @Component({
   selector: 'app-blakcjack',
@@ -14,7 +17,7 @@ import { GameService } from '../Services/blackjack.service';
   templateUrl: './blakcjack.component.html',
   styleUrl: './blakcjack.component.scss'
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
   deck: any[] = [];
   dealer: any = null;
   player: any = null;
@@ -24,22 +27,52 @@ export class GameComponent implements OnInit {
   currentBet: number | null = null;
   gameOver: boolean = false;
   message: string | null = null;
+  session: Session | null = null;
+  user: any;
+  gameId: any;
+  userId: any;
 
   constructor(private router: Router, private authservice :AuthorizationService,
-              private blackjacService : GameService
+              private blackjacService : GameService, private sessionService: SessionService
    ) {}
-
-  ngOnInit() {
-    let userId = sessionStorage.getItem('userId');
-    if (!userId) {
-      this.router.navigate(['/login']);
-    }
-    this.authservice.authentificate(Number(userId));
-
-    this.startNewGame();
-    document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
+  ngOnDestroy(): void {
+    this.endSession();
   }
 
+  async ngOnInit() {
+    this.userId = sessionStorage.getItem('userId');
+    if (!this.userId) {
+      this.router.navigate(['/login']);
+    }
+    this.authservice.authentificate(Number(this.userId));
+    this.gameId = await this.blackjacService.getGameId("Blackjack");
+    this.startNewGame();
+    this.startSession();
+    document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
+  }
+  startSession(): void {
+    this.session = {
+      id: 0,
+      userId: this.userId,
+      startTime: new Date(),
+      endTime: new Date(),
+      gameId: this.gameId,
+      totalSpent: 0,
+      totalWon: 0
+    };
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: Event): void {
+    this.endSession();
+  }
+  endSession(): void {
+    this.session!.endTime = new Date();
+
+    this.sessionService.sendSession(this.session!).subscribe(
+    );
+    console.log(this.session)
+  }
   generateDeck() {
     const cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
     const suits = ['♦', '♣', '♥', '♠'];
@@ -76,6 +109,7 @@ export class GameComponent implements OnInit {
   }
 
   startNewGame(type?: string) {
+      this.authservice.authentificate(Number(this.userId));
       this.authservice.getCurrentUser().subscribe(
         cuurrentuser => {
           if (cuurrentuser) {
@@ -83,7 +117,6 @@ export class GameComponent implements OnInit {
               name: cuurrentuser.first_Name,
               wallet: cuurrentuser.balance
             };
-  
             this.name = cuurrentuser.first_Name || '';
             this.wallet = cuurrentuser.balance || 0;
           } else {
@@ -135,6 +168,9 @@ export class GameComponent implements OnInit {
     } else {
       const wallet = this.wallet - currentBet;
       this.blackjacService.placeBet(currentBet);
+      if (this.session) {
+        this.session.totalSpent += currentBet;
+      }
       const deck = (this.deck.length < 10) ? this.generateDeck() : this.deck;
       const { updatedDeck, player, dealer } = this.dealCards(deck);
 
@@ -169,7 +205,7 @@ export class GameComponent implements OnInit {
     }
   }
 
-  stand() {
+   async stand() {
     if (!this.gameOver) {
       if (this.currentBet) {
         let deck = this.deck;
@@ -192,11 +228,17 @@ export class GameComponent implements OnInit {
             this.message = 'Dealer wins...';
           } else if (winner === 'player') {
             this.wallet += this.currentBet * 2;
-            this.blackjacService.winBet(this.currentBet * 2);
+            await this.blackjacService.winBet(this.currentBet * 2);
+            if (this.session) {
+              this.session.totalWon += this.currentBet * 2;
+            }
             this.message = 'You win!';
           } else {
             this.wallet += this.currentBet;
-            this.blackjacService.winBet(this.currentBet);
+            await this.blackjacService.winBet(this.currentBet);
+            if (this.session) {
+              this.session.totalWon += this.currentBet ;
+            }
             this.message = 'Push.';
           }
         }
