@@ -89,4 +89,14 @@ section {
     display: flex;
     justify-content: center;
   }
+@media (max-width: 768px) {
+  section{
+    button{
+      font-size: 12px;
+    }
+    #welcome{
+    font-size: 22px;
+    }
+  }
+}
   

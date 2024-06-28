@@ -46,3 +46,21 @@ section{
         }
     }
 }
+@media (max-width: 768px) {
+   section{
+      h2{
+         font-size: 22px;
+     }
+     .games {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+         .game{
+            width: 48%;
+            height: 40%;
+         }
+      }
+      
+      
+   }
+}

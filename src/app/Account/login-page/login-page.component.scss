@@ -108,4 +108,9 @@ p {
     left: 0;
     width: 100%;
 }
+@media (max-width: 768px){
+    section.panel {
+        width: 70%;
+    }
+}
 

@@ -30,7 +30,7 @@ button:nth-of-type(2) {
 .carousel {
   overflow: hidden;
   position: relative;
-  width: 80%;
+  width: 100%;
   height: 20%;
 }
 
@@ -50,10 +50,16 @@ button:nth-of-type(2) {
     width: 100%;
   }
 }
-.profile{
-  position: absolute;
-  width: 19%;
-  height: 40%;
-  background: #262832;
-  right: 0.5%;
+
+@media (max-width: 768px) {
+  button {
+    display: none;
+  }
+  .carousel{
+    overflow-x: auto;
+  }
+  
 }
+  
+  
+

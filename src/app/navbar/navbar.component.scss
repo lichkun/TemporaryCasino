@@ -40,3 +40,16 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .navbar{
+        overflow-x: auto;
+        overflow-y:hidden;
+        input{
+            width: 17%;
+        }
+    }
+    .game{
+        font-size: 14px;
+    }
+}
