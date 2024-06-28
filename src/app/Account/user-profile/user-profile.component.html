@@ -1,15 +1,26 @@
 <div class="center">
     <div class="parent">
-        <div class="avatar-block"> 
-            <div class="avatar-container">
-                <div class="avatar"></div>
-                <button class="add-button">Add</button>
-                <div class="balance">
-                    <span class="balance-amount"><b>€</b>{{ user?.balance }}</span>
-                </div>
-            </div>
+      <div class="avatar-block">
+        <div class="avatar-container">
+            <div class="avatar" *ngIf="user?.pfp" [style.background-image]="'url(' + baseUrl + '/api/FileUpload/files/' + user?.pfp + ')'" ></div>
+          <div *ngIf="!user?.pfp">No avatar available</div>
+  
+          <div class="file-upload">
+            <label for="file-input" class="file-label">
+              Upload Photo
+            </label>
+            <input id="file-input" type="file" (change)="onFileSelected($event)" />
+          </div>
+  
+          <div class="balance">
+            <span class="balance-amount"><b>€</b>{{ user?.balance }}</span>
+          </div>
         </div>
-        <div class="details-block">  <app-user-details-form></app-user-details-form>    </div>
-        <div class="unknown-block"> </div>
+      </div>
+      <div class="details-block">
+        <app-user-details-form></app-user-details-form>
+      </div>
+      <div class="unknown-block"></div>
     </div>
-</div>
+  </div>
+  
