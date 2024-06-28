@@ -99,3 +99,8 @@ p.small-text {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+@media (max-width: 768px) {
+    p{
+        font-size: var(--fs16) !important;
+    }
+}

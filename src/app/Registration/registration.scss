@@ -55,3 +55,29 @@ section{
     color: #888;
     font-size: 20px;
 }
+@media (max-width:768px){
+    section{
+        .content{
+            
+            .details{
+                flex-basis: 100%;
+                input{
+                    font-size: 16px;
+                    padding: 0 12%;
+                }
+                .field{
+                    img{
+                        position: absolute;
+                        left: 3%;
+                        top: 30% !important;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+        .commercial{
+            display: none;
+        }
+    }
+}

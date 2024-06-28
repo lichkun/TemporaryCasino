@@ -8,13 +8,13 @@ import { Subscription } from 'rxjs';
 
 
 import { AuthorizationService } from '../../Services/authorization.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
   imports: [
-    ReactiveFormsModule,CommonModule,
+    ReactiveFormsModule,CommonModule,RouterModule
   ],
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']

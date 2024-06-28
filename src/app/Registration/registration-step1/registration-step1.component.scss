@@ -76,7 +76,7 @@ input[type="checkbox"]:checked + label p:after {
         color: #CA1C65;
         text-decoration: none;
         &:hover{
-            color: #660f33;
+            color: var(--reference-hover-color);
         }
     }
 }
@@ -91,7 +91,7 @@ input[type="checkbox"]:checked + label p:after {
     top: 20%;
     &:hover{
         cursor: pointer;
-        color: #660f33;
+        color: var(--reference-hover-color);
     }
 }
 
@@ -108,4 +108,15 @@ input[type="checkbox"]:checked + label p:after {
     color: #CA1C65; 
     margin-top: 5px; 
     margin-bottom: 5px; 
+}
+@media (max-width:768px){
+    .editphone{
+        font-size: var(--fs16);
+    }
+    .h1{
+        font-size: var(--fs20) !important;
+    }
+    label p{
+        font-size: var(--fs14);
+    }
 }

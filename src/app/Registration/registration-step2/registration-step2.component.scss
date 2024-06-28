@@ -30,5 +30,31 @@
     cursor: not-allowed; 
     color: #666; 
 }
+@media (max-width: 768px) {
+    .nextbtn{
+        font-size: var(--fs14);
+    }
+    p{
+        font-size: var(--fs16) !important;
+    }
+    input{
+        margin-top: 5% !important;
+    }
+    img{
+        top: 50% !important;
+    }
+    section{
+        .content{
+            .details{
+               
+                .field{
+                    img{
+                        top: 45% !important;
+                    }
+                }
+            }
+        }
+    }
+}
 
 

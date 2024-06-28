@@ -37,7 +37,7 @@
         color: #CA1C65;
         text-decoration: none;
         &:hover{
-            color: #660f33;
+            color: var(--reference-hover-color);
         }
     }
 }
@@ -83,7 +83,7 @@
     top: 20%;
     &:hover{
         cursor: pointer;
-        color: #660f33;
+        color: var(--reference-hover-color);
     }
 }
 
@@ -91,4 +91,34 @@
     background-color: #999; 
     cursor: not-allowed; 
     color: #666; 
+}
+@media (max-width: 768px) {
+    .nextbtn{
+        font-size: var(--fs14);
+    }
+    p{
+        font-size: var(--fs16) !important;
+        text-align: left !important;
+    }
+    input{
+        margin-top: 5% !important;
+    }
+    .code-input {
+        font-size: var(--fs16) ;
+        padding: 2% 5%;
+    }
+    section .content .details input {
+        font-size: 16px;
+        height: 30px !important;
+        width: 40px !important;
+        padding: 5% 2% !important;
+      }
+      section .content .field input {
+        height: 20px !important;
+        width: 60% !important;
+      }
+      .editphone{
+        font-size: var(--fs18);
+        right: 0%;
+    }
 }

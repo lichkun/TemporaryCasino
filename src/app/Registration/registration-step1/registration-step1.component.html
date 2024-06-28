@@ -4,7 +4,7 @@
     </div>
     <form class="content" [formGroup]="form">
         <div class="details">
-            <p>Please fill in your details below</p><br/>
+            <p class="h1">Please fill in your details below</p><br/>
             <div class="field">
                 <img src="assets/img/icons/Vector.svg" alt="" style="top: 25%">
                 <input type="text" placeholder="E-mail" formControlName="email">
@@ -31,7 +31,7 @@
             
             <div class="next">
                 <button type="submit" (click)="next()" [disabled]="form.invalid" class="nextbtn">Next</button>
-                <p>Already have an account?<a href="#">Log in</a></p>
+                <p>Already have an account?<a routerLink="/login">Log in</a></p>
             </div>
         </div>
         <div class="commercial">
