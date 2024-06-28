@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { AuthorizationService } from '../../Services/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-email-edit-page',
@@ -15,6 +17,8 @@ import { CommonModule } from '@angular/common';
 export class EmailEditPageComponent {
 
   form!: FormGroup;
+
+  constructor(private authService: AuthorizationService, private router: Router) {}
 
 
   ngOnInit(): void {
@@ -30,11 +34,20 @@ export class EmailEditPageComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('Email - ', this.form.get('email')?.value);
-      console.log('Password - ', this.form.get('password')?.value);
-    } else {
-      console.log('Form is bruh');
-    }
+      const newEmail = this.form.get('email')?.value;
 
+      this.authService.updateUserEmail(newEmail).subscribe(
+        response => {
+          console.log('Phone updated successfully:', response);
+          this.router.navigate(['/user-profile']);
+        },
+        error => {
+          console.error('Error updating phone:', error);
+          
+        }
+      );
+    } else {
+      console.log('Form is invalid');
+    }
   }
 }

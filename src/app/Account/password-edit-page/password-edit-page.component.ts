@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthorizationService } from '../../Services/authorization.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-password-edit-page',
@@ -14,6 +16,8 @@ import { CommonModule } from '@angular/common';
 })
 export class PasswordEditPageComponent {
   form!: FormGroup;
+
+  constructor(private authService: AuthorizationService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -38,10 +42,20 @@ export class PasswordEditPageComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('Email - ', this.form.get('email')?.value);
-      console.log('Password - ', this.form.get('password')?.value);
+      const newPassword = this.form.get('password2')?.value;
+
+      this.authService.updateUserPassword(newPassword).subscribe(
+        response => {
+          console.log('Pass updated successfully:', response);
+          this.router.navigate(['/user-profile']);
+        },
+        error => {
+          console.error('Error updating Pass:', error);
+          
+        }
+      );
     } else {
-      console.log('Form is bruh');
+      console.log('Form is invalid');
     }
   }
 
