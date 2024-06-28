@@ -798,3 +798,30 @@ animation: transform 5s linear infinite;
 	margin-left: 45px;
 	margin-top: -25px;
 }
+
+@media (max-width: 768px) {
+	#container{
+		flex-direction: column;
+		align-items: center;
+		height: 100vh;
+	}
+	.wheel{
+		left: 0;
+		margin-top: -30%;
+		margin-bottom: 5%;
+	}
+	.chipDeck, .bankContainer{
+		position: absolute;
+		margin-left: 0;
+		margin-top: 120px;
+		padding: 3px 0;
+		border: 1px solid;
+		border-radius: 10px;
+		box-shadow: inset -2px -4px rgb(0 0 0 / 20%);
+	}
+	
+	.bankContainer{
+		margin-top: 65px;
+	}
+	
+}
