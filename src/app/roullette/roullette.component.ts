@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {  Component, ElementRef,  HostListener,  Renderer2, ViewChild } from '@angular/core';
 import { AuthorizationService } from '../Services/authorization.service';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationStart, Router, RouterModule } from '@angular/router';
 import { GameService } from '../Services/blackjack.service';
 import { SessionService } from '../Services/session.service';
 import { Session } from '../Interfaces/Session';
@@ -11,14 +11,14 @@ import { Session } from '../Interfaces/Session';
 @Component({
   selector: 'app-roullette',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './roullette.component.html',
   styleUrl: './roullette.component.scss',
  })
  export class RoulletteComponent  {
   userId: any;
   user: any;
-  session: Session | null = null;
+  session: any = null;
   gameId: any;
 
   async ngOnInit(): Promise<void> {
@@ -36,7 +36,7 @@ import { Session } from '../Interfaces/Session';
         } 
       },
     );
-    this.gameId = await this.gameService.getGameId("Blackjack");
+    this.gameId = await this.gameService.getGameId("Roullette");
     this.startSession();
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -46,7 +46,6 @@ import { Session } from '../Interfaces/Session';
   }
   startSession(): void {
     this.session = {
-      id: 0,
       userId: Number(this.userId),
       startTime: new Date(),
       endTime: new Date(),
