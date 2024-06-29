@@ -38,8 +38,8 @@
 }
 
 .favgame-information{
-    
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: auto; /* Centers horizontally */
     justify-content: center; 
     align-items: center; 
