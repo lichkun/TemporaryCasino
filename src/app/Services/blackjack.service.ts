@@ -26,21 +26,19 @@ export class GameService {
       if (!response.ok) {
         throw new Error('Error placing bet');
       }
-      return await response.json();
     } catch (error) {
       console.error('Error:', error);
     }
   };
   
-  async winBet (bet: number) {
+  async winBet (win: number) {
     try {
-      const response = await fetch(`${this.apiUrl}/api/User/win/${bet}`, {
+      const response = await fetch(`${this.apiUrl}/api/User/win/${win}`, {
         method: 'GET'
       });
       if (!response.ok) {
         throw new Error('Error winning bet');
       }
-      return await response.json();
     } catch (error) {
       console.error('Error:', error);
     }

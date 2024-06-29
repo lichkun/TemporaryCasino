@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import {  Component, ElementRef,  Renderer2, ViewChild } from '@angular/core';
+import {  Component, ElementRef,  HostListener,  Renderer2, ViewChild } from '@angular/core';
 import { AuthorizationService } from '../Services/authorization.service';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { GameService } from '../Services/blackjack.service';
+import { SessionService } from '../Services/session.service';
+import { Session } from '../Interfaces/Session';
 
 
 
@@ -14,17 +16,19 @@ import { GameService } from '../Services/blackjack.service';
   styleUrl: './roullette.component.scss',
  })
  export class RoulletteComponent  {
+  userId: any;
+  user: any;
+  session: Session | null = null;
+  gameId: any;
 
-
-
-  ngOnInit(): void {
-    const userId = sessionStorage.getItem('userId');
-    if (!userId) {
+  async ngOnInit(): Promise<void> {
+    this.userId = sessionStorage.getItem('userId');
+    if (!this.userId) {
       this.router.navigate(['/login']);
     } else {
 
     }
-    this.authService.authentificate(Number(userId));
+    this.authService.authentificate(Number(this.userId));
     this.authService.getCurrentUser().subscribe(
       cuurrentuser => {
         if (cuurrentuser) {
@@ -32,6 +36,34 @@ import { GameService } from '../Services/blackjack.service';
         } 
       },
     );
+    this.gameId = await this.gameService.getGameId("Blackjack");
+    this.startSession();
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.endSession(); 
+      }
+    });
+  }
+  startSession(): void {
+    this.session = {
+      id: 0,
+      userId: Number(this.userId),
+      startTime: new Date(),
+      endTime: new Date(),
+      gameId: this.gameId,
+      totalSpent: 0,
+      totalWon: 0
+    };
+  }
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: Event): void {
+    this.endSession();
+  }
+  endSession(): void {
+    this.session!.endTime = new Date();
+
+    this.sessionService.sendSession(this.session!)
+    console.log(this.session)
   }
     wheelAnimation: string = "end";
     bankValue: number = 1000;
@@ -48,7 +80,7 @@ import { GameService } from '../Services/blackjack.service';
     isPlacingBet: boolean = true;
     blocks: number[] = Array.from({ length: 11 }, (_, i) => i + 1);
 
-    constructor(private el: ElementRef, private renderer: Renderer2, private authService: AuthorizationService,  private router: Router, private gameService : GameService) {}
+    constructor(private el: ElementRef, private sessionService: SessionService, private renderer: Renderer2, private authService: AuthorizationService,  private router: Router, private gameService : GameService) {}
 
     @ViewChild('pnContent') pnContent!: ElementRef;
     @ViewChild('container') container!: ElementRef;
@@ -417,14 +449,16 @@ import { GameService } from '../Services/blackjack.service';
     }
  
     spin(){
-        this.gameService.placeBet(this.wager)
+        this.gameService.placeBet(this.currentBet);
+        if (this.session) {
+          this.session.totalSpent += this.currentBet;
+        }
         this.isSpinBtn = !this.isSpinBtn;
         this.isPlacingBet = false;
         const winningSpin = Math.floor(Math.random() * 36);
         this.spinWheel(winningSpin);
         setTimeout(() => {
         if (this.numbersBet.includes(winningSpin)) {
-          
           let winValue = 0;
           let betTotal = 0;
           this.bet.forEach((betItem: any) => {
@@ -434,6 +468,9 @@ import { GameService } from '../Services/blackjack.service';
               winValue += betItem.odds * betItem.amt;
               betTotal += betItem.amt;
               this.gameService.winBet(betItem.odds * betItem.amt + betItem.amt)
+              if (this.session) {
+                this.session.totalWon += betItem.odds * betItem.amt + betItem.amt ;
+              }
             }
           });
           this.win(winningSpin, winValue, betTotal);

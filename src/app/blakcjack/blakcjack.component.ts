@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component,   HostListener,   OnDestroy,   OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {  Router, RouterModule } from '@angular/router';
+import {  NavigationStart, Router, RouterModule } from '@angular/router';
 import { CardComponent } from '../card/card.component';
 
 import { AuthorizationService } from '../Services/authorization.service';
 import { GameService } from '../Services/blackjack.service';
 import { SessionService } from '../Services/session.service';
 import { Session } from '../Interfaces/Session';
-import { User } from '../Interfaces/User';
 
 @Component({
   selector: 'app-blakcjack',
@@ -17,7 +16,7 @@ import { User } from '../Interfaces/User';
   templateUrl: './blakcjack.component.html',
   styleUrl: './blakcjack.component.scss'
 })
-export class GameComponent implements OnInit, OnDestroy {
+export class GameComponent implements OnInit{
   deck: any[] = [];
   dealer: any = null;
   player: any = null;
@@ -27,7 +26,7 @@ export class GameComponent implements OnInit, OnDestroy {
   currentBet: number | null = null;
   gameOver: boolean = false;
   message: string | null = null;
-  session: Session | null = null;
+  session: any ;
   user: any;
   gameId: any;
   userId: any;
@@ -35,9 +34,6 @@ export class GameComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private authservice :AuthorizationService,
               private blackjacService : GameService, private sessionService: SessionService
    ) {}
-  ngOnDestroy(): void {
-    this.endSession();
-  }
 
   async ngOnInit() {
     this.userId = sessionStorage.getItem('userId');
@@ -48,12 +44,16 @@ export class GameComponent implements OnInit, OnDestroy {
     this.gameId = await this.blackjacService.getGameId("Blackjack");
     this.startNewGame();
     this.startSession();
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.endSession(); 
+      }
+    });
     document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
   startSession(): void {
     this.session = {
-      id: 0,
-      userId: this.userId,
+      userId: Number(this.userId),
       startTime: new Date(),
       endTime: new Date(),
       gameId: this.gameId,
@@ -69,8 +69,15 @@ export class GameComponent implements OnInit, OnDestroy {
   endSession(): void {
     this.session!.endTime = new Date();
 
-    this.sessionService.sendSession(this.session!).subscribe(
-    );
+    this.sessionService.sendSession(this.session).subscribe({
+      next: (response) => {
+        console.log('Session created successfully:', response);
+      },
+      error: (error) => {
+        console.error('Error creating session:', error);
+        console.log(this.session); 
+      }
+    });
     console.log(this.session)
   }
   generateDeck() {
@@ -109,7 +116,6 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   startNewGame(type?: string) {
-      this.authservice.authentificate(Number(this.userId));
       this.authservice.getCurrentUser().subscribe(
         cuurrentuser => {
           if (cuurrentuser) {
@@ -205,7 +211,7 @@ export class GameComponent implements OnInit, OnDestroy {
     }
   }
 
-   async stand() {
+    async stand() {
     if (!this.gameOver) {
       if (this.currentBet) {
         let deck = this.deck;
@@ -228,7 +234,8 @@ export class GameComponent implements OnInit, OnDestroy {
             this.message = 'Dealer wins...';
           } else if (winner === 'player') {
             this.wallet += this.currentBet * 2;
-            await this.blackjacService.winBet(this.currentBet * 2);
+            let wag = this.currentBet * 2
+            await this.blackjacService.winBet(wag);
             if (this.session) {
               this.session.totalWon += this.currentBet * 2;
             }

@@ -7,11 +7,11 @@ import { Session } from '../Interfaces/Session';
   providedIn: 'root'
 })
 export class SessionService {
-  private apiUrl = 'https://localhost:7105'; 
+  private apiUrl = `https://localhost:7105`; 
 
   constructor(private http: HttpClient) {}
 
-  sendSession(session: Session): Observable<any> {
-    return this.http.post<any>(this.apiUrl, session);
+  sendSession(session: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/api/Session`, session);
   }
 }
